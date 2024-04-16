@@ -1,0 +1,9 @@
+module MixColumns();
+
+    reg [15:0] Array [3:0][3:0];
+    initial begin
+        Array[0][0] =  8'h2a;
+    end
+
+endmodule
+
