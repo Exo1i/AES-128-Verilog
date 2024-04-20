@@ -1,0 +1,19 @@
+|sbox
+givenData[0] => Ram0.RADDR
+givenData[1] => Ram0.RADDR1
+givenData[2] => Ram0.RADDR2
+givenData[3] => Ram0.RADDR3
+givenData[4] => Ram0.RADDR4
+givenData[5] => Ram0.RADDR5
+givenData[6] => Ram0.RADDR6
+givenData[7] => Ram0.RADDR7
+sboxRes[0] << Ram0.DATAOUT
+sboxRes[1] << Ram0.DATAOUT1
+sboxRes[2] << Ram0.DATAOUT2
+sboxRes[3] << Ram0.DATAOUT3
+sboxRes[4] << Ram0.DATAOUT4
+sboxRes[5] << Ram0.DATAOUT5
+sboxRes[6] << Ram0.DATAOUT6
+sboxRes[7] << Ram0.DATAOUT7
+
+

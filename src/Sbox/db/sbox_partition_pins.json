@@ -1,0 +1,73 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "sboxRes[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sboxRes[7]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[0]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[1]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[2]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[3]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[6]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[5]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[4]",
+					"strict" : false
+				},
+				{
+					"name" : "givenData[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

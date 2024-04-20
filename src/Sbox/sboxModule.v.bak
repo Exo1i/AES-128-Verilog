@@ -1,0 +1,522 @@
+module sbox(input wire [7: 0] givenData, output wire[7: 0] sboxRes);
+  reg [7:0] tempReg;
+  assign sboxRes = tempReg;
+  always@(*)
+  begin
+    case(givenData)
+      8'h00:
+        tempReg =  8'h63;
+      8'h01:
+        tempReg =  8'h7c;
+      8'h02:
+        tempReg =  8'h77;
+      8'h03:
+        tempReg =  8'h7b;
+      8'h04:
+        tempReg =  8'hf2;
+      8'h05:
+        tempReg =  8'h6b;
+      8'h06:
+        tempReg =  8'h6f;
+      8'h07:
+        tempReg =  8'hc5;
+      8'h08:
+        tempReg =  8'h30;
+      8'h09:
+        tempReg =  8'h01;
+      8'h0a:
+        tempReg =  8'h67;
+      8'h0b:
+        tempReg =  8'h2b;
+      8'h0c:
+        tempReg =  8'hfe;
+      8'h0d:
+        tempReg =  8'hd7;
+      8'h0e:
+        tempReg =  8'hab;
+      8'h0f:
+        tempReg =  8'h76;
+      8'h10:
+        tempReg =  8'hca;
+      8'h11:
+        tempReg =  8'h82;
+      8'h12:
+        tempReg =  8'hc9;
+      8'h13:
+        tempReg =  8'h7d;
+      8'h14:
+        tempReg =  8'hfa;
+      8'h15:
+        tempReg =  8'h59;
+      8'h16:
+        tempReg =  8'h47;
+      8'h17:
+        tempReg =  8'hf0;
+      8'h18:
+        tempReg =  8'had;
+      8'h19:
+        tempReg =  8'hd4;
+      8'h1a:
+        tempReg =  8'ha2;
+      8'h1b:
+        tempReg =  8'haf;
+      8'h1c:
+        tempReg =  8'h9c;
+      8'h1d:
+        tempReg =  8'ha4;
+      8'h1e:
+        tempReg =  8'h72;
+      8'h1f:
+        tempReg =  8'hc0;
+      8'h20:
+        tempReg =  8'hb7;
+      8'h21:
+        tempReg =  8'hfd;
+      8'h22:
+        tempReg =  8'h93;
+      8'h23:
+        tempReg =  8'h26;
+      8'h24:
+        tempReg =  8'h36;
+      8'h25:
+        tempReg =  8'h3f;
+      8'h26:
+        tempReg =  8'hf7;
+      8'h27:
+        tempReg =  8'hcc;
+      8'h28:
+        tempReg =  8'h34;
+      8'h29:
+        tempReg =  8'ha5;
+      8'h2a:
+        tempReg =  8'he5;
+      8'h2b:
+        tempReg =  8'hf1;
+      8'h2c:
+        tempReg =  8'h71;
+      8'h2d:
+        tempReg =  8'hd8;
+      8'h2e:
+        tempReg =  8'h31;
+      8'h2f:
+        tempReg =  8'h15;
+      8'h30:
+        tempReg =  8'h04;
+      8'h31:
+        tempReg =  8'hc7;
+      8'h32:
+        tempReg =  8'h23;
+      8'h33:
+        tempReg =  8'hc3;
+      8'h34:
+        tempReg =  8'h18;
+      8'h35:
+        tempReg =  8'h96;
+      8'h36:
+        tempReg =  8'h05;
+      8'h37:
+        tempReg =  8'h9a;
+      8'h38:
+        tempReg =  8'h07;
+      8'h39:
+        tempReg =  8'h12;
+      8'h3a:
+        tempReg =  8'h80;
+      8'h3b:
+        tempReg =  8'he2;
+      8'h3c:
+        tempReg =  8'heb;
+      8'h3d:
+        tempReg =  8'h27;
+      8'h3e:
+        tempReg =  8'hb2;
+      8'h3f:
+        tempReg =  8'h75;
+      8'h40:
+        tempReg =  8'h09;
+      8'h41:
+        tempReg =  8'h83;
+      8'h42:
+        tempReg =  8'h2c;
+      8'h43:
+        tempReg =  8'h1a;
+      8'h44:
+        tempReg =  8'h1b;
+      8'h45:
+        tempReg =  8'h6e;
+      8'h46:
+        tempReg =  8'h5a;
+      8'h47:
+        tempReg =  8'ha0;
+      8'h48:
+        tempReg =  8'h52;
+      8'h49:
+        tempReg =  8'h3b;
+      8'h4a:
+        tempReg =  8'hd6;
+      8'h4b:
+        tempReg =  8'hb3;
+      8'h4c:
+        tempReg =  8'h29;
+      8'h4d:
+        tempReg =  8'he3;
+      8'h4e:
+        tempReg =  8'h2f;
+      8'h4f:
+        tempReg =  8'h84;
+      8'h50:
+        tempReg =  8'h53;
+      8'h51:
+        tempReg =  8'hd1;
+      8'h52:
+        tempReg =  8'h00;
+      8'h53:
+        tempReg =  8'hed;
+      8'h54:
+        tempReg =  8'h20;
+      8'h55:
+        tempReg =  8'hfc;
+      8'h56:
+        tempReg =  8'hb1;
+      8'h57:
+        tempReg =  8'h5b;
+      8'h58:
+        tempReg =  8'h6a;
+      8'h59:
+        tempReg =  8'hcb;
+      8'h5a:
+        tempReg =  8'hbe;
+      8'h5b:
+        tempReg =  8'h39;
+      8'h5c:
+        tempReg =  8'h4a;
+      8'h5d:
+        tempReg =  8'h4c;
+      8'h5e:
+        tempReg =  8'h58;
+      8'h5f:
+        tempReg =  8'hcf;
+      8'h60:
+        tempReg =  8'hd0;
+      8'h61:
+        tempReg =  8'hef;
+      8'h62:
+        tempReg =  8'haa;
+      8'h63:
+        tempReg =  8'hfb;
+      8'h64:
+        tempReg =  8'h43;
+      8'h65:
+        tempReg =  8'h4d;
+      8'h66:
+        tempReg =  8'h33;
+      8'h67:
+        tempReg =  8'h85;
+      8'h68:
+        tempReg =  8'h45;
+      8'h69:
+        tempReg =  8'hf9;
+      8'h6a:
+        tempReg =  8'h02;
+      8'h6b:
+        tempReg =  8'h7f;
+      8'h6c:
+        tempReg =  8'h50;
+      8'h6d:
+        tempReg =  8'h3c;
+      8'h6e:
+        tempReg =  8'h9f;
+      8'h6f:
+        tempReg =  8'ha8;
+      8'h70:
+        tempReg =  8'h51;
+      8'h71:
+        tempReg =  8'ha3;
+      8'h72:
+        tempReg =  8'h40;
+      8'h73:
+        tempReg =  8'h8f;
+      8'h74:
+        tempReg =  8'h92;
+      8'h75:
+        tempReg =  8'h9d;
+      8'h76:
+        tempReg =  8'h38;
+      8'h77:
+        tempReg =  8'hf5;
+      8'h78:
+        tempReg =  8'hbc;
+      8'h79:
+        tempReg =  8'hb6;
+      8'h7a:
+        tempReg =  8'hda;
+      8'h7b:
+        tempReg =  8'h21;
+      8'h7c:
+        tempReg =  8'h10;
+      8'h7d:
+        tempReg =  8'hff;
+      8'h7e:
+        tempReg =  8'hf3;
+      8'h7f:
+        tempReg =  8'hd2;
+      8'h80:
+        tempReg =  8'hcd;
+      8'h81:
+        tempReg =  8'h0c;
+      8'h82:
+        tempReg =  8'h13;
+      8'h83:
+        tempReg =  8'hec;
+      8'h84:
+        tempReg =  8'h5f;
+      8'h85:
+        tempReg =  8'h97;
+      8'h86:
+        tempReg =  8'h44;
+      8'h87:
+        tempReg =  8'h17;
+      8'h88:
+        tempReg =  8'hc4;
+      8'h89:
+        tempReg =  8'ha7;
+      8'h8a:
+        tempReg =  8'h7e;
+      8'h8b:
+        tempReg =  8'h3d;
+      8'h8c:
+        tempReg =  8'h64;
+      8'h8d:
+        tempReg =  8'h5d;
+      8'h8e:
+        tempReg =  8'h19;
+      8'h8f:
+        tempReg =  8'h73;
+      8'h90:
+        tempReg =  8'h60;
+      8'h91:
+        tempReg =  8'h81;
+      8'h92:
+        tempReg =  8'h4f;
+      8'h93:
+        tempReg =  8'hdc;
+      8'h94:
+        tempReg =  8'h22;
+      8'h95:
+        tempReg =  8'h2a;
+      8'h96:
+        tempReg =  8'h90;
+      8'h97:
+        tempReg =  8'h88;
+      8'h98:
+        tempReg =  8'h46;
+      8'h99:
+        tempReg =  8'hee;
+      8'h9a:
+        tempReg =  8'hb8;
+      8'h9b:
+        tempReg =  8'h14;
+      8'h9c:
+        tempReg =  8'hde;
+      8'h9d:
+        tempReg =  8'h5e;
+      8'h9e:
+        tempReg =  8'h0b;
+      8'h9f:
+        tempReg =  8'hdb;
+      8'ha0:
+        tempReg =  8'he0;
+      8'ha1:
+        tempReg =  8'h32;
+      8'ha2:
+        tempReg =  8'h3a;
+      8'ha3:
+        tempReg =  8'h0a;
+      8'ha4:
+        tempReg =  8'h49;
+      8'ha5:
+        tempReg =  8'h06;
+      8'ha6:
+        tempReg =  8'h24;
+      8'ha7:
+        tempReg =  8'h5c;
+      8'ha8:
+        tempReg =  8'hc2;
+      8'ha9:
+        tempReg =  8'hd3;
+      8'haa:
+        tempReg =  8'hac;
+      8'hab:
+        tempReg =  8'h62;
+      8'hac:
+        tempReg =  8'h91;
+      8'had:
+        tempReg =  8'h95;
+      8'hae:
+        tempReg =  8'he4;
+      8'haf:
+        tempReg =  8'h79;
+      8'hb0:
+        tempReg =  8'he7;
+      8'hb1:
+        tempReg =  8'hc8;
+      8'hb2:
+        tempReg =  8'h37;
+      8'hb3:
+        tempReg =  8'h6d;
+      8'hb4:
+        tempReg =  8'h8d;
+      8'hb5:
+        tempReg =  8'hd5;
+      8'hb6:
+        tempReg =  8'h4e;
+      8'hb7:
+        tempReg =  8'ha9;
+      8'hb8:
+        tempReg =  8'h6c;
+      8'hb9:
+        tempReg =  8'h56;
+      8'hba:
+        tempReg =  8'hf4;
+      8'hbb:
+        tempReg =  8'hea;
+      8'hbc:
+        tempReg =  8'h65;
+      8'hbd:
+        tempReg =  8'h7a;
+      8'hbe:
+        tempReg =  8'hae;
+      8'hbf:
+        tempReg =  8'h08;
+      8'hc0:
+        tempReg =  8'hba;
+      8'hc1:
+        tempReg =  8'h78;
+      8'hc2:
+        tempReg =  8'h25;
+      8'hc3:
+        tempReg =  8'h2e;
+      8'hc4:
+        tempReg =  8'h1c;
+      8'hc5:
+        tempReg =  8'ha6;
+      8'hc6:
+        tempReg =  8'hb4;
+      8'hc7:
+        tempReg =  8'hc6;
+      8'hc8:
+        tempReg =  8'he8;
+      8'hc9:
+        tempReg =  8'hdd;
+      8'hca:
+        tempReg =  8'h74;
+      8'hcb:
+        tempReg =  8'h1f;
+      8'hcc:
+        tempReg =  8'h4b;
+      8'hcd:
+        tempReg =  8'hbd;
+      8'hce:
+        tempReg =  8'h8b;
+      8'hcf:
+        tempReg =  8'h8a;
+      8'hd0:
+        tempReg =  8'h70;
+      8'hd1:
+        tempReg =  8'h3e;
+      8'hd2:
+        tempReg =  8'hb5;
+      8'hd3:
+        tempReg =  8'h66;
+      8'hd4:
+        tempReg =  8'h48;
+      8'hd5:
+        tempReg =  8'h03;
+      8'hd6:
+        tempReg =  8'hf6;
+      8'hd7:
+        tempReg =  8'h0e;
+      8'hd8:
+        tempReg =  8'h61;
+      8'hd9:
+        tempReg =  8'h35;
+      8'hda:
+        tempReg =  8'h57;
+      8'hdb:
+        tempReg =  8'hb9;
+      8'hdc:
+        tempReg =  8'h86;
+      8'hdd:
+        tempReg =  8'hc1;
+      8'hde:
+        tempReg =  8'h1d;
+      8'hdf:
+        tempReg =  8'h9e;
+      8'he0:
+        tempReg =  8'he1;
+      8'he1:
+        tempReg =  8'hf8;
+      8'he2:
+        tempReg =  8'h98;
+      8'he3:
+        tempReg =  8'h11;
+      8'he4:
+        tempReg =  8'h69;
+      8'he5:
+        tempReg =  8'hd9;
+      8'he6:
+        tempReg =  8'h8e;
+      8'he7:
+        tempReg =  8'h94;
+      8'he8:
+        tempReg =  8'h9b;
+      8'he9:
+        tempReg =  8'h1e;
+      8'hea:
+        tempReg =  8'h87;
+      8'heb:
+        tempReg =  8'he9;
+      8'hec:
+        tempReg =  8'hce;
+      8'hed:
+        tempReg =  8'h55;
+      8'hee:
+        tempReg =  8'h28;
+      8'hef:
+        tempReg =  8'hdf;
+      8'hf0:
+        tempReg =  8'h8c;
+      8'hf1:
+        tempReg =  8'ha1;
+      8'hf2:
+        tempReg =  8'h89;
+      8'hf3:
+        tempReg =  8'h0d;
+      8'hf4:
+        tempReg =  8'hbf;
+      8'hf5:
+        tempReg =  8'he6;
+      8'hf6:
+        tempReg =  8'h42;
+      8'hf7:
+        tempReg =  8'h68;
+      8'hf8:
+        tempReg =  8'h41;
+      8'hf9:
+        tempReg =  8'h99;
+      8'hfa:
+        tempReg =  8'h2d;
+      8'hfb:
+        tempReg =  8'h0f;
+      8'hfc:
+        tempReg =  8'hb0;
+      8'hfd:
+        tempReg =  8'h54;
+      8'hfe:
+        tempReg =  8'hbb;
+      8'hff:
+        tempReg =  8'h16;
+    endcase
+    ;
+  end
+endmodule
