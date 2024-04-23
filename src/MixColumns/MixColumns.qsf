@@ -19,7 +19,7 @@
 #
 # Quartus Prime
 # Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-# Date created = 20:58:09  April 16, 2024
+# Date created = 21:09:10  April 22, 2024
 #
 # -------------------------------------------------------------------------- #
 #
@@ -38,10 +38,10 @@
 
 
 set_global_assignment -name FAMILY "Cyclone V"
-set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name DEVICE 5CSEMA2U23C6
 set_global_assignment -name TOP_LEVEL_ENTITY MixColumns
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 23.1STD.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:58:09  APRIL 16, 2024"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:09:10  APRIL 22, 2024"
 set_global_assignment -name LAST_QUARTUS_VERSION "23.1std.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0

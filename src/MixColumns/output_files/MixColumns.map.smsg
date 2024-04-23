@@ -1,0 +1,8 @@
+Info (10281): Verilog HDL Declaration information at MixColumns.v(3): object "A0" differs only in case from object "a0" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 3
+Info (10281): Verilog HDL Declaration information at MixColumns.v(4): object "A1" differs only in case from object "a1" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 4
+Info (10281): Verilog HDL Declaration information at MixColumns.v(5): object "A2" differs only in case from object "a2" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 5
+Info (10281): Verilog HDL Declaration information at MixColumns.v(6): object "A3" differs only in case from object "a3" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 6
+Info (10281): Verilog HDL Declaration information at MixColumns.v(8): object "B0" differs only in case from object "b0" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 8
+Info (10281): Verilog HDL Declaration information at MixColumns.v(9): object "B1" differs only in case from object "b1" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 9
+Info (10281): Verilog HDL Declaration information at MixColumns.v(10): object "B2" differs only in case from object "b2" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 10
+Info (10281): Verilog HDL Declaration information at MixColumns.v(11): object "B3" differs only in case from object "b3" in the same scope File: C:/Users/DELL/Desktop/MixColumns/MixColumns.v Line: 11

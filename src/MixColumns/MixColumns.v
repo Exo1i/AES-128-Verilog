@@ -1,35 +1,46 @@
-module MixColumns(in,out);
+module MixColumns(A0,A1,A2,A3,B0,B1,B2,B3);
 
-  	input [31:0] in;
-  output [31:0]out;
-    reg [15:0] Array [3:0][3:0];
-	 
-	initial begin
-        Array[0][0] =  8'h02;
-        Array[0][1] =  8'h03;
-        Array[0][2] =  8'h01;
-        Array[0][3] =  8'h01;
+input [7:0]A0;
+input [7:0]A1;
+input [7:0]A2;
+input [7:0]A3;
 
-        Array[1][0] =  8'h01;
-        Array[1][1] =  8'h02;
-        Array[1][2] =  8'h03;
-        Array[1][3] =  8'h01;
+output [7:0]B0;
+output [7:0]B1;
+output [7:0]B2;
+output [7:0]B3;
 
-        Array[2][0] =  8'h01;
-        Array[2][1] =  8'h01;
-        Array[2][2] =  8'h02;
-        Array[2][3] =  8'h03;
+wire [7:0]a0;
+wire [7:0]a1;
+wire [7:0]a2;
+wire [7:0]a3;
 
-        Array[3][0] =  8'h03;
-        Array[3][1] =  8'h01;
-        Array[3][2] =  8'h01;
-        Array[3][3] =  8'h03;
-	end
-	
-  assign out[7:0]    = (Array[0][0] & in[7:0])   ^ (Array[0][1] & in[7:0]) ^  (Array[0][2] & in[7:0]) ^  (Array[0][3] & in[7:0]);
-  assign out[15:8]   = (Array[1][0] & in[15:8])  ^ (Array[1][1] & in[15:8]) ^ (Array[1][2] & in[15:8]) ^ (Array[1][3] & in[15:8]);
-  assign out[23:16]  = (Array[2][0] & in[23:16]) ^ (Array[2][1] & in[23:1]) ^ (Array[2][2] & in[23:1]) ^ (Array[2][3] & in[23:1]);
-  assign out[31:24]  = (Array[3][0] & in[31:24]) ^ (Array[3][1] & in[31:2]) ^ (Array[3][2] & in[31:2]) ^ (Array[3][3] & in[31:2]);
+wire [7:0]b0;
+wire [7:0]b1;
+wire [7:0]b2;
+wire [7:0]b3;
+
+wire [3:0]temp;
+
+assign a0 = A0;
+assign temp[0] = a0 >> 7;
+assign b0 = (A0 << 1) ^ (temp[0] * 8'h1B);
+
+assign a1 = A1;
+assign temp[1] = a1 >> 7;
+assign b1 = (A1 << 1) ^ (temp[1] * 8'h1B);
+
+assign a2 = A2;
+assign temp[2] = a2 >> 7;
+assign b2 = (A2 << 1) ^ (temp[2] * 8'h1B);
+
+assign a3 = A3;
+assign temp[3] = a3 >> 7;
+assign b3 = (A3 << 1) ^ (temp[3] * 8'h1B);
+
+assign B0 = b0 ^ a3 ^ a2 ^ b1 ^ a1;
+assign B1 = b1 ^ a0 ^ a3 ^ b2 ^ a2;
+assign B2 = b2 ^ a1 ^ a0 ^ b3 ^ a3;
+assign B3 = b3 ^ a2 ^ a1 ^ b0 ^ a0;
 
 endmodule
-

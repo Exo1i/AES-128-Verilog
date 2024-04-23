@@ -1,0 +1,4 @@
+Info (10281): Verilog HDL Declaration information at InvMixColumns.v(3): object "A0" differs only in case from object "a0" in the same scope File: C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v Line: 3
+Info (10281): Verilog HDL Declaration information at InvMixColumns.v(4): object "A1" differs only in case from object "a1" in the same scope File: C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v Line: 4
+Info (10281): Verilog HDL Declaration information at InvMixColumns.v(5): object "A2" differs only in case from object "a2" in the same scope File: C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v Line: 5
+Info (10281): Verilog HDL Declaration information at InvMixColumns.v(6): object "A3" differs only in case from object "a3" in the same scope File: C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v Line: 6
