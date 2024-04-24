@@ -1,0 +1,531 @@
+Analysis & Synthesis report for InvSubBytes
+Wed Apr 24 19:37:01 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Post-Synthesis Netlist Statistics for Top Partition
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Apr 24 19:37:01 2024          ;
+; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                   ; InvSubBytes                                    ;
+; Top-level Entity Name           ; InvSubBytes                                    ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 0                                              ;
+; Total pins                      ; 256                                            ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; InvSubBytes        ; InvSubBytes        ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                               ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------+---------+
+; InvSubBytes.v                    ; yes             ; User Verilog HDL File  ; E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 61             ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 77             ;
+;     -- 7 input functions                    ; 0              ;
+;     -- 6 input functions                    ; 45             ;
+;     -- 5 input functions                    ; 10             ;
+;     -- 4 input functions                    ; 10             ;
+;     -- <=3 input functions                  ; 12             ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 256            ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; state[1]~input ;
+; Maximum fan-out                             ; 45             ;
+; Total fan-out                               ; 659            ;
+; Average fan-out                             ; 1.12           ;
++---------------------------------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                              ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name          ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------+--------------+--------------+
+; |InvSubBytes               ; 77 (0)              ; 0 (0)                     ; 0                 ; 0          ; 256  ; 0            ; |InvSubBytes                 ; InvSubBytes  ; work         ;
+;    |inverse_sbox:b0|       ; 77 (77)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |InvSubBytes|inverse_sbox:b0 ; inverse_sbox ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 78                          ;
+;     normal            ; 78                          ;
+;         0 data inputs ; 1                           ;
+;         2 data inputs ; 1                           ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 10                          ;
+;         5 data inputs ; 10                          ;
+;         6 data inputs ; 45                          ;
+; boundary_port         ; 256                         ;
+;                       ;                             ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 3.64                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Wed Apr 24 19:36:54 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off InvSubBytes -c InvSubBytes
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 2 design units, including 2 entities, in source file invsubbytes.v
+    Info (12023): Found entity 1: InvSubBytes File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Info (12023): Found entity 2: inverse_sbox File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 22
+Info (12127): Elaborating entity "InvSubBytes" for the top level hierarchy
+Warning (10034): Output port "newState[127..8]" at InvSubBytes.v(1) has no driver File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+Info (12128): Elaborating entity "inverse_sbox" for hierarchy "inverse_sbox:b0" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 3
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "newState[8]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[9]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[10]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[11]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[12]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[13]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[14]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[15]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[16]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[17]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[18]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[19]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[20]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[21]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[22]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[23]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[24]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[25]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[26]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[27]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[28]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[29]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[30]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[31]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[32]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[33]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[34]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[35]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[36]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[37]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[38]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[39]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[40]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[41]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[42]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[43]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[44]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[45]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[46]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[47]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[48]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[49]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[50]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[51]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[52]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[53]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[54]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[55]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[56]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[57]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[58]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[59]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[60]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[61]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[62]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[63]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[64]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[65]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[66]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[67]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[68]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[69]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[70]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[71]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[72]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[73]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[74]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[75]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[76]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[77]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[78]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[79]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[80]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[81]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[82]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[83]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[84]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[85]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[86]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[87]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[88]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[89]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[90]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[91]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[92]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[93]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[94]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[95]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[96]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[97]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[98]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[99]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[100]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[101]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[102]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[103]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[104]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[105]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[106]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[107]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[108]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[109]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[110]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[111]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[112]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[113]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[114]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[115]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[116]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[117]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[118]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[119]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[120]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[121]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[122]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[123]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[124]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[125]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[126]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (13410): Pin "newState[127]" is stuck at GND File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 120 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "state[8]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[9]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[10]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[11]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[12]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[13]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[14]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[15]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[16]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[17]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[18]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[19]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[20]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[21]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[22]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[23]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[24]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[25]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[26]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[27]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[28]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[29]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[30]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[31]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[32]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[33]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[34]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[35]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[36]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[37]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[38]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[39]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[40]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[41]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[42]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[43]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[44]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[45]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[46]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[47]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[48]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[49]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[50]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[51]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[52]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[53]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[54]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[55]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[56]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[57]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[58]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[59]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[60]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[61]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[62]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[63]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[64]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[65]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[66]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[67]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[68]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[69]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[70]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[71]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[72]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[73]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[74]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[75]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[76]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[77]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[78]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[79]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[80]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[81]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[82]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[83]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[84]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[85]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[86]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[87]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[88]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[89]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[90]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[91]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[92]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[93]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[94]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[95]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[96]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[97]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[98]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[99]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[100]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[101]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[102]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[103]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[104]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[105]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[106]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[107]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[108]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[109]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[110]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[111]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[112]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[113]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[114]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[115]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[116]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[117]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[118]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[119]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[120]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[121]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[122]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[123]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[124]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[125]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[126]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+    Warning (15610): No output dependent on input pin "state[127]" File: E:/Uni/Second Term/Adv Logic/AES-128-Verilog/src/InvSubBytes/InvSubBytes.v Line: 1
+Info (21057): Implemented 333 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 128 input pins
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 77 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 244 warnings
+    Info: Peak virtual memory: 4834 megabytes
+    Info: Processing ended: Wed Apr 24 19:37:01 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:10
+
+
