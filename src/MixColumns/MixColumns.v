@@ -1,4 +1,42 @@
-module MixColumns(A0,A1,A2,A3,B0,B1,B2,B3);
+module MixColumns(A,B);
+
+input [127:0] A;
+output [127:0] B;
+
+// Split the 128-bit input into four 32-bit segments
+wire [31:0] input_wires[3:0];
+assign input_wires[0] = A[127:96];
+assign input_wires[1] = A[95:64];
+assign input_wires[2] = A[63:32];
+assign input_wires[3] = A[31:0];
+
+// Outputs for each MixColumns instance
+wire [31:0] output_wires[3:0];
+
+// Instantiate the MixColumns module four times
+MxColumns mix0(input_wires[0][31:24], input_wires[0][23:16], input_wires[0][15:8], input_wires[0][7:0],
+                output_wires[3][31:24], output_wires[3][23:16], output_wires[3][15:8], output_wires[3][7:0]);
+
+MxColumns mix1(input_wires[1][31:24], input_wires[1][23:16], input_wires[1][15:8], input_wires[1][7:0],
+                output_wires[2][31:24], output_wires[2][23:16], output_wires[2][15:8], output_wires[2][7:0]);
+
+MxColumns mix2(input_wires[2][31:24], input_wires[2][23:16], input_wires[2][15:8], input_wires[2][7:0],
+                output_wires[1][31:24], output_wires[1][23:16], output_wires[1][15:8], output_wires[1][7:0]);
+
+MxColumns mix3(input_wires[3][31:24], input_wires[3][23:16], input_wires[3][15:8], input_wires[3][7:0],
+                output_wires[0][31:24], output_wires[0][23:16], output_wires[0][15:8], output_wires[0][7:0]);
+
+// Combine the 32-bit segments into the 128-bit output
+assign B[127:96] = output_wires[3];
+assign B[95:64] = output_wires[2];
+assign B[63:32] = output_wires[1];
+assign B[31:0] = output_wires[0];
+
+endmodule
+
+
+
+module MxColumns(A0,A1,A2,A3,B0,B1,B2,B3);
 
 input [7:0]A0;
 input [7:0]A1;

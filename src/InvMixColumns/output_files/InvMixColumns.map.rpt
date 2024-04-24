@@ -1,5 +1,5 @@
 Analysis & Synthesis report for InvMixColumns
-Tue Apr 23 15:55:29 2024
+Wed Apr 24 21:29:13 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -44,7 +44,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 23 15:55:29 2024          ;
+; Analysis & Synthesis Status     ; Successful - Wed Apr 24 21:29:13 2024          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; InvMixColumns                                  ;
 ; Top-level Entity Name           ; InvMixColumns                                  ;
@@ -167,13 +167,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                      ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                        ; Library ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------+---------+
-; InvMixColumns.v                  ; yes             ; User Verilog HDL File  ; C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v ;         ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                         ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
+; InvMixColumns.v                  ; yes             ; User Verilog HDL File  ; C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns/InvMixColumns.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------+
@@ -275,14 +275,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Apr 23 15:55:21 2024
+    Info: Processing started: Wed Apr 24 21:29:07 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off InvMixColumns -c InvMixColumns
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file invmixcolumns.v
-    Info (12023): Found entity 1: InvMixColumns File: C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file invmixcolumns.v
+    Info (12023): Found entity 1: OrgMixColumns File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns/InvMixColumns.v Line: 1
+    Info (12023): Found entity 2: InvMixColumns File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns/InvMixColumns.v Line: 38
 Info (12127): Elaborating entity "InvMixColumns" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at InvMixColumns.v(19): truncated value with size 32 to match size of target (8) File: C:/Users/DELL/Desktop/InvMixColumns/InvMixColumns.v Line: 19
+Warning (10230): Verilog HDL assignment warning at InvMixColumns.v(55): truncated value with size 32 to match size of target (8) File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns/InvMixColumns.v Line: 55
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
@@ -292,9 +293,9 @@ Info (21057): Implemented 165 device resources after synthesis - the final resou
     Info (21061): Implemented 89 logic cells
     Info (21062): Implemented 12 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4845 megabytes
-    Info: Processing ended: Tue Apr 23 15:55:29 2024
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Peak virtual memory: 4849 megabytes
+    Info: Processing ended: Wed Apr 24 21:29:13 2024
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:04
 
 

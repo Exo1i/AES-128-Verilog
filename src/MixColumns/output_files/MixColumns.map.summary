@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Mon Apr 22 21:25:01 2024
+Analysis & Synthesis Status : Successful - Wed Apr 24 21:25:05 2024
 Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 Revision Name : MixColumns
 Top-level Entity Name : MixColumns
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 0
-Total pins : 64
+Total pins : 256
 Total virtual pins : 0
 Total block memory bits : 0
-Total DSP Blocks : 4
+Total DSP Blocks : 16
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0
