@@ -1,0 +1,21 @@
+module InvSubBytes(input [127:0] state , output [127:0] newState);
+
+sbox b0(state[7:0] , newState[7:0]);
+sbox b1(state[15:8] , newState[15:8]);
+sbox b2(state[23:16] , newState[23:16]);
+sbox b3(state[31:24] , newState[31:24]);
+sbox b4(state[39:32] , newState[39:32]);
+sbox b5(state[47:40] , newState[47:40]);
+sbox b6(state[55:48] , newState[55:48]);
+sbox b7(state[63:56] , newState[63:56]);
+sbox b8(state[71:64] , newState[71:64]);
+sbox b9(state[79:72] , newState[79:72]);
+sbox b10(state[87:80] , newState[87:80]);
+sbox b11(state[95:88] , newState[95:88]);
+sbox b12(state[103:96] , newState[103:96]);
+sbox b13(state[111:104] , newState[111:104]);
+sbox b14(state[119:112] , newState[119:112]);
+sbox b15(state[127:120] , newState[127:120]);
+
+
+endmodule
