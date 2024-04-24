@@ -246,30 +246,30 @@ assign sboxRes = (givenData == 8'h63) ? 8'h00 :
                  (givenData == 8'h1d) ? 8'hde :
                  (givenData == 8'h9e) ? 8'hdf :
                  (givenData == 8'he1) ? 8'he0 :
-					  (givenData == 8'hf8) ? 8'he1 :
-					  (givenData == 8'h98) ? 8'he2 :
-					  (givenData == 8'h11) ? 8'he3 :
-					  (givenData == 8'h69) ? 8'he4 :
-					  (givenData == 8'hd9) ? 8'he5 :
-					  (givenData == 8'h8e) ? 8'he6 :
-					  (givenData == 8'h94) ? 8'he7 :
-					  (givenData == 8'h9b) ? 8'he8 :
-					  (givenData == 8'h1e) ? 8'he9 :
-					  (givenData == 8'h87) ? 8'hea :
-					  (givenData == 8'he9) ? 8'heb :
-					  (givenData == 8'hce) ? 8'hec :
-					  (givenData == 8'h55) ? 8'hed :
-					  (givenData == 8'h28) ? 8'hee :
-					  (givenData == 8'hdf) ? 8'hef :
-					  (givenData == 8'h8c) ? 8'hf0 :
-					  (givenData == 8'ha1) ? 8'hf1 :
-					  (givenData == 8'h89) ? 8'hf2 :
-					  (givenData == 8'h0d) ? 8'hf3 :
-					  (givenData == 8'hbf) ? 8'hf4 :
-					  (givenData == 8'he6) ? 8'hf5 :
-					  (givenData == 8'h42) ? 8'hf6 :
-					  (givenData == 8'h68) ? 8'hf7 :
-					  (givenData == 8'h41) ? 8'hf8 :
+				 (givenData == 8'hf8) ? 8'he1 :
+				 (givenData == 8'h98) ? 8'he2 :
+				 (givenData == 8'h11) ? 8'he3 :
+				 (givenData == 8'h69) ? 8'he4 :
+				 (givenData == 8'hd9) ? 8'he5 :
+				 (givenData == 8'h8e) ? 8'he6 :
+				 (givenData == 8'h94) ? 8'he7 :
+				 (givenData == 8'h9b) ? 8'he8 :
+				 (givenData == 8'h1e) ? 8'he9 :
+				 (givenData == 8'h87) ? 8'hea :
+				 (givenData == 8'he9) ? 8'heb :
+				 (givenData == 8'hce) ? 8'hec :
+				 (givenData == 8'h55) ? 8'hed :
+				 (givenData == 8'h28) ? 8'hee :
+				 (givenData == 8'hdf) ? 8'hef :
+				 (givenData == 8'h8c) ? 8'hf0 :
+				 (givenData == 8'ha1) ? 8'hf1 :
+				 (givenData == 8'h89) ? 8'hf2 :
+				 (givenData == 8'h0d) ? 8'hf3 :
+				 (givenData == 8'hbf) ? 8'hf4 :
+				 (givenData == 8'he6) ? 8'hf5 :
+				 (givenData == 8'h42) ? 8'hf6 :
+				 (givenData == 8'h68) ? 8'hf7 :
+				 (givenData == 8'h41) ? 8'hf8 :
                  (givenData == 8'h99) ? 8'hf9 :
                  (givenData == 8'h2d) ? 8'hfa :
                  (givenData == 8'h0f) ? 8'hfb :
