@@ -15,36 +15,36 @@ assign input_wires[5] = A[31:0];
 wire [31:0] output_wires[5:0];
 
 // Instantiate the MixColumns module six times
-MxColumns mix0(input_wires[0][31:24], input_wires[0][23:16], input_wires[0][15:8], input_wires[0][7:0],
-                       output_wires[0][7:0], output_wires[0][15:8], output_wires[0][23:16], output_wires[0][31:24]);
+  MxColumns mix0(input_wires[0][31:24], input_wires[0][23:16], input_wires[0][15:8], input_wires[0][7:0],
+                 output_wires[0][31:24], output_wires[0][23:16], output_wires[0][15:8], output_wires[0][7:0]);
 
 
-MxColumns mix1(input_wires[1][31:24], input_wires[1][23:16], input_wires[1][15:8], input_wires[1][7:0],
-                       output_wires[1][7:0], output_wires[1][15:8], output_wires[1][23:16], output_wires[1][31:24]);
+  MxColumns mix1(input_wires[1][31:24], input_wires[1][23:16], input_wires[1][15:8], input_wires[1][7:0],
+                 output_wires[1][31:24], output_wires[1][23:16], output_wires[1][15:8], output_wires[1][7:0]);
 
 
 MxColumns mix2(input_wires[2][31:24], input_wires[2][23:16], input_wires[2][15:8], input_wires[2][7:0],
-                       output_wires[2][7:0], output_wires[2][15:8], output_wires[2][23:16], output_wires[2][31:24]);
+               output_wires[2][31:24], output_wires[2][23:16], output_wires[2][15:8], output_wires[2][7:0]);
 
 
 MxColumns mix3(input_wires[3][31:24], input_wires[3][23:16], input_wires[3][15:8], input_wires[3][7:0],
-                       output_wires[3][7:0], output_wires[3][15:8], output_wires[3][23:16], output_wires[3][31:24]);
+               output_wires[3][31:24], output_wires[3][23:16], output_wires[3][15:8], output_wires[3][7:0]);
 
 
 MxColumns mix4(input_wires[4][31:24], input_wires[4][23:16], input_wires[4][15:8], input_wires[4][7:0],
-                       output_wires[4][7:0], output_wires[4][15:8], output_wires[4][23:16], output_wires[4][31:24]);
+               output_wires[4][31:24], output_wires[4][23:16], output_wires[4][15:8], output_wires[4][7:0]);
 
 MxColumns mix5(input_wires[5][31:24], input_wires[5][23:16], input_wires[5][15:8], input_wires[5][7:0],
-                       output_wires[5][7:0], output_wires[5][15:8], output_wires[5][23:16], output_wires[5][31:24]);
+               output_wires[5][31:24], output_wires[5][23:16], output_wires[5][15:8], output_wires[5][7:0]);
 							  
 							  
 // Combine the 32-bit segments into the 192-bit output
-assign B[191:160] = output_wires[5];
-assign B[159:128] = output_wires[4];
-assign B[127:96] = output_wires[3];
-assign B[95:64] = output_wires[2];
-assign B[63:32] = output_wires[1];
-assign B[31:0] = output_wires[0];
+assign B[191:160] = output_wires[0];
+assign B[159:128] = output_wires[1];
+assign B[127:96] = output_wires[2];
+assign B[95:64] = output_wires[3];
+assign B[63:32] = output_wires[4];
+assign B[31:0] = output_wires[5];
 
 endmodule
 

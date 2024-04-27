@@ -1,5 +1,5 @@
 Analysis & Synthesis report for InvMixColumns_256
-Wed Apr 24 22:08:11 2024
+Sat Apr 27 10:37:33 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -48,7 +48,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Apr 24 22:08:11 2024          ;
+; Analysis & Synthesis Status     ; Successful - Sat Apr 27 10:37:33 2024          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; InvMixColumns_256                              ;
 ; Top-level Entity Name           ; InvMixColumns_256                              ;
@@ -201,7 +201,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                           ;
 ; Total DSP Blocks                            ; 96                        ;
 ;                                             ;                           ;
-; Maximum fan-out node                        ; InvMxColumns:mix0|Mult0~8 ;
+; Maximum fan-out node                        ; InvMxColumns:mix7|Mult0~8 ;
 ; Maximum fan-out                             ; 18                        ;
 ; Total fan-out                               ; 3920                      ;
 ; Average fan-out                             ; 2.10                      ;
@@ -325,16 +325,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Wed Apr 24 22:08:05 2024
+    Info: Processing started: Sat Apr 27 10:37:14 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off InvMixColumns_256 -c InvMixColumns_256
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file invmixcolumns_256.v
     Info (12023): Found entity 1: InvMixColumns_256 File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns_256/InvMixColumns_256.v Line: 1
-    Info (12023): Found entity 2: InvMxColumns File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns_256/InvMixColumns_256.v Line: 62
+    Info (12023): Found entity 2: InvMxColumns File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns_256/InvMixColumns_256.v Line: 65
 Info (12127): Elaborating entity "InvMixColumns_256" for the top level hierarchy
 Info (12128): Elaborating entity "InvMxColumns" for hierarchy "InvMxColumns:mix0" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns_256/InvMixColumns_256.v Line: 23
-Warning (10230): Verilog HDL assignment warning at InvMixColumns_256.v(79): truncated value with size 32 to match size of target (8) File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns_256/InvMixColumns_256.v Line: 79
+Warning (10230): Verilog HDL assignment warning at InvMixColumns_256.v(82): truncated value with size 32 to match size of target (8) File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/InvMixColumns_256/InvMixColumns_256.v Line: 82
 Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -345,9 +345,9 @@ Info (21057): Implemented 1352 device resources after synthesis - the final reso
     Info (21061): Implemented 744 logic cells
     Info (21062): Implemented 96 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4886 megabytes
-    Info: Processing ended: Wed Apr 24 22:08:11 2024
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4893 megabytes
+    Info: Processing ended: Sat Apr 27 10:37:33 2024
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:04
 
 
