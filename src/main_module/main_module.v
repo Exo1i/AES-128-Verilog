@@ -1,38 +1,28 @@
-module main_module(
-    input [127:0] plain_text,
-    input [127:0] key,
-    output reg [127:0] cipher_text,
-    input clk  // Module Required To Be Pipelined
-);
+module main_module#(parameter N=128,parameter Nr=10,parameter Nk=4)(plain_text,key,cipher_text);
 
-reg [127:0] state0_reg[1:0], state1_reg[1:0];
+input [127:0] plain_text;
+input [N-1:0] key;
+output [127:0] cipher_text;
+wire [(128*(Nr+1))-1 :0] fullkeys;
+wire [127:0] states [Nr+1:0];
 
-wire [1407:0] expanded_key;
+wire [N-1:0] afterSubBytes;
+wire [N-1:0] afterShiftRows;
 
-keySchedule ks(key,expanded_key);
+keySchedule #(Nr,Nk) ke (key,fullkeys);
 
-addRoundKey rk_initial(plain_text,expanded_key[127:0],state1_reg[0]);
+addRoundKey addrk1 (plain_text,states[0],fullkeys[((128*(Nr+1))-1)-:128]);
 
 genvar i;
 generate
-for (i = 1; i <= 9; i = i + 1) begin : AES_CIPHER
-    SubBytes s(state1_reg[0], state1_reg[1]);
-    ShiftRows sr(state1_reg[1], state0_reg[1]);
-    MixColumns mx(state0_reg[1], state0_reg[0]);
-    addRoundKey k(state0_reg[0], expanded_key[(128*i) +: 128], state1_reg[0]);
-end
+	
+	for(i=1; i < Nr ;i=i+1)begin : AES_ENCRYPT
+		Encryption_Round er(states[i-1],fullkeys[(((128*(Nr+1))-1)-128*i)-:128],states[i]);
+		end
+		SubBytes sb(states[Nr-1],afterSubBytes);
+		ShiftRows sr(afterSubBytes,afterShiftRows);
+		addRoundKey addrk2(afterShiftRows,states[Nr],fullkeys[N-1:0]);
+			assign cipher_text = states[Nr];
+
 endgenerate
-
-SubBytes s_final(state1_reg[0], state1_reg[1]);
-ShiftRows sr_final(state1_reg[1], state0_reg[1]);
-addRoundKey k_final(state0_reg[1], expanded_key[1407:1280], state0_reg[0]);
-
-always @(posedge clk) begin
-    cipher_text <= state0_reg[0];
-	 //state1_reg[0] <= state0_reg[0];
-    //state1_reg[1] <= state1_reg[0]; 
-	 //state0_reg[1] <= state1_reg[1];
-	 //state0_reg[0] <= state0_reg[1];
-end
-
 endmodule
