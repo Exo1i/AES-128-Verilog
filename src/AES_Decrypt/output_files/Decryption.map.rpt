@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Decryption
-Tue Apr 30 20:55:03 2024
+Tue Apr 30 22:43:21 2024
 Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
@@ -51,7 +51,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 30 20:55:03 2024          ;
+; Analysis & Synthesis Status     ; Successful - Tue Apr 30 22:43:21 2024          ;
 ; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; Decryption                                     ;
 ; Top-level Entity Name           ; Decryption                                     ;
@@ -176,7 +176,8 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
-;     Processors 7-14        ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processors 8-14        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -200,14 +201,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 3429        ;
+; Estimate of Logic utilization (ALMs needed) ; 3347        ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 4261        ;
-;     -- 7 input functions                    ; 33          ;
-;     -- 6 input functions                    ; 2564        ;
-;     -- 5 input functions                    ; 231         ;
-;     -- 4 input functions                    ; 238         ;
-;     -- <=3 input functions                  ; 1195        ;
+; Combinational ALUT usage for logic          ; 4190        ;
+;     -- 7 input functions                    ; 63          ;
+;     -- 6 input functions                    ; 2441        ;
+;     -- 5 input functions                    ; 392         ;
+;     -- 4 input functions                    ; 126         ;
+;     -- <=3 input functions                  ; 1168        ;
 ;                                             ;             ;
 ; Dedicated logic registers                   ; 32          ;
 ;                                             ;             ;
@@ -215,10 +216,10 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Total DSP Blocks                            ; 0           ;
 ;                                             ;             ;
-; Maximum fan-out node                        ; roundNum[1] ;
-; Maximum fan-out                             ; 389         ;
-; Total fan-out                               ; 21334       ;
-; Average fan-out                             ; 4.01        ;
+; Maximum fan-out node                        ; roundNum[0] ;
+; Maximum fan-out                             ; 387         ;
+; Total fan-out                               ; 21207       ;
+; Average fan-out                             ; 4.04        ;
 +---------------------------------------------+-------------+
 
 
@@ -227,8 +228,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------+-------------+--------------+
-; |Decryption                ; 4261 (813)          ; 32 (32)                   ; 0                 ; 0          ; 513  ; 0            ; |Decryption                ; Decryption  ; work         ;
-;    |keySchedule:ke|        ; 3448 (3448)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Decryption|keySchedule:ke ; keySchedule ; work         ;
+; |Decryption                ; 4190 (683)          ; 32 (32)                   ; 0                 ; 0          ; 513  ; 0            ; |Decryption                ; Decryption  ; work         ;
+;    |keySchedule:ke|        ; 3507 (3507)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Decryption|keySchedule:ke ; keySchedule ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -263,7 +264,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 32:1               ; 128 bits  ; 2688 LEs      ; 1280 LEs             ; 1408 LEs               ; No         ; |Decryption|Mux223         ;
+; 32:1               ; 128 bits  ; 2688 LEs      ; 1280 LEs             ; 1408 LEs               ; No         ; |Decryption|Mux160         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -339,22 +340,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 32                          ;
 ;     ENA               ; 32                          ;
-; arriav_lcell_comb     ; 4309                        ;
+; arriav_lcell_comb     ; 4238                        ;
 ;     arith             ; 32                          ;
 ;         1 data inputs ; 32                          ;
-;     extend            ; 33                          ;
-;         7 data inputs ; 33                          ;
-;     normal            ; 4244                        ;
+;     extend            ; 63                          ;
+;         7 data inputs ; 63                          ;
+;     normal            ; 4143                        ;
 ;         1 data inputs ; 48                          ;
-;         2 data inputs ; 677                         ;
-;         3 data inputs ; 486                         ;
-;         4 data inputs ; 238                         ;
-;         5 data inputs ; 231                         ;
-;         6 data inputs ; 2564                        ;
+;         2 data inputs ; 552                         ;
+;         3 data inputs ; 584                         ;
+;         4 data inputs ; 126                         ;
+;         5 data inputs ; 392                         ;
+;         6 data inputs ; 2441                        ;
 ; boundary_port         ; 513                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 41.00                       ;
-; Average LUT depth     ; 33.70                       ;
+; Max LUT depth         ; 42.00                       ;
+; Average LUT depth     ; 35.09                       ;
 +-----------------------+-----------------------------+
 
 
@@ -363,7 +364,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:10     ;
+; Top            ; 00:00:12     ;
 +----------------+--------------+
 
 
@@ -373,7 +374,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Apr 30 20:54:46 2024
+    Info: Processing started: Tue Apr 30 22:43:01 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Decryption -c Decryption
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
@@ -595,142 +596,142 @@ Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 128 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "plain_text[127]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[126]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[125]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[124]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[123]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[122]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[121]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[120]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[119]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[118]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[117]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[116]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[115]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[114]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[113]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[112]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[111]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[110]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[109]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[108]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[107]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[106]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[105]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[104]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[103]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[102]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[101]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[100]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[99]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[98]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[97]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[96]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[95]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[94]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[93]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[92]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[91]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[90]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[89]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[88]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[87]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[86]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[85]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[84]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[83]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[82]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[81]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[80]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[79]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[78]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[77]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[76]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[75]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[74]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[73]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[72]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[71]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[70]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[69]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[68]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[67]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[66]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[65]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[64]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[63]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[62]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[61]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[60]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[59]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[58]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[57]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[56]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[55]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[54]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[53]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[52]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[51]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[50]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[49]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[48]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[47]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[46]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[45]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[44]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[43]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[42]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[41]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[40]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[39]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[38]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[37]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[36]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[35]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[34]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[33]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[32]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[31]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[30]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[29]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[28]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[27]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[26]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[25]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[24]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[23]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[22]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[21]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[20]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[19]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[18]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[17]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[16]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[15]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[14]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[13]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[12]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[11]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[10]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[9]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[8]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[7]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[6]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[5]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[4]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[3]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[2]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-    Warning (15610): No output dependent on input pin "plain_text[1]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
     Warning (15610): No output dependent on input pin "plain_text[0]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
-Info (21057): Implemented 4774 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "plain_text[1]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[2]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[3]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[4]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[5]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[6]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[7]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[8]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[9]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[10]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[11]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[12]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[13]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[14]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[15]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[16]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[17]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[18]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[19]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[20]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[21]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[22]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[23]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[24]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[25]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[26]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[27]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[28]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[29]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[30]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[31]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[32]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[33]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[34]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[35]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[36]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[37]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[38]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[39]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[40]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[41]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[42]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[43]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[44]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[45]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[46]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[47]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[48]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[49]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[50]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[51]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[52]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[53]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[54]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[55]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[56]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[57]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[58]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[59]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[60]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[61]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[62]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[63]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[64]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[65]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[66]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[67]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[68]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[69]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[70]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[71]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[72]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[73]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[74]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[75]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[76]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[77]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[78]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[79]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[80]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[81]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[82]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[83]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[84]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[85]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[86]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[87]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[88]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[89]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[90]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[91]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[92]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[93]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[94]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[95]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[96]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[97]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[98]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[99]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[100]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[101]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[102]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[103]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[104]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[105]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[106]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[107]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[108]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[109]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[110]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[111]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[112]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[113]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[114]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[115]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[116]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[117]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[118]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[119]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[120]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[121]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[122]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[123]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[124]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[125]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[126]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+    Warning (15610): No output dependent on input pin "plain_text[127]" File: C:/Users/DELL/Desktop/Logic Design Project/project/AES-128-Verilog/src/AES_Decrypt/Decryption.v Line: 3
+Info (21057): Implemented 4703 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 385 input pins
     Info (21059): Implemented 128 output pins
-    Info (21061): Implemented 4261 logic cells
+    Info (21061): Implemented 4190 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 267 warnings
-    Info: Peak virtual memory: 4963 megabytes
-    Info: Processing ended: Tue Apr 30 20:55:03 2024
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 5015 megabytes
+    Info: Processing ended: Tue Apr 30 22:43:21 2024
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:10
 
 
