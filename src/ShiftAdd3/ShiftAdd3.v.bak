@@ -1,0 +1,21 @@
+module ShiftAdd3(input[7:0], output[11:0] BCD);
+initial begin
+BCD = 0;
+end
+
+integer i;
+for(i=0; i< 8; i = i + 1) begin
+	BCD = BCD{BCD[10:0] , in[7-i]};
+	if (BCD[3:0] > 4'b0100) begin
+    wire [3:0] temp = BCD[3:0] + 4'b0011;
+    BCD[3:0] = wire[3:0];
+    end
+    else if(BCD[7:4] > 4'b0100) begin
+    wire [3:0] temp = BCD[7:4] + 4'b0011;
+    BCD[7:4] = temp[3:0];
+    end
+    else if(BCD[11:8] > 4'b0100) begin
+    BCD[11:8] = BCD[11:8] + 4'b0011;
+    end
+end
+endmodule
