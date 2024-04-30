@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Tue Apr 30 19:41:34 2024
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : aesEncrypt
+Top-level Entity Name : aesEncrypt
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 288
+Total pins : 513
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 16
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

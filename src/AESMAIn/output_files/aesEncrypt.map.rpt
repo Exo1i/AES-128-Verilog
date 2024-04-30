@@ -1,0 +1,503 @@
+Analysis & Synthesis report for aesEncrypt
+Tue Apr 30 19:41:34 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |aesEncrypt
+ 12. Parameter Settings for User Entity Instance: keySchedule:ke
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
+ 16. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Apr 30 19:41:34 2024          ;
+; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                   ; aesEncrypt                                     ;
+; Top-level Entity Name           ; aesEncrypt                                     ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 288                                            ;
+; Total pins                      ; 513                                            ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 16                                             ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; aesEncrypt         ; aesEncrypt         ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.23        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;  22.9%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                    ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                      ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
+; main.v                           ; yes             ; User Verilog HDL File  ; C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimate of Logic utilization (ALMs needed) ; 6116        ;
+;                                             ;             ;
+; Combinational ALUT usage for logic          ; 7455        ;
+;     -- 7 input functions                    ; 92          ;
+;     -- 6 input functions                    ; 4685        ;
+;     -- 5 input functions                    ; 490         ;
+;     -- 4 input functions                    ; 449         ;
+;     -- <=3 input functions                  ; 1739        ;
+;                                             ;             ;
+; Dedicated logic registers                   ; 288         ;
+;                                             ;             ;
+; I/O pins                                    ; 513         ;
+;                                             ;             ;
+; Total DSP Blocks                            ; 16          ;
+;                                             ;             ;
+; Maximum fan-out node                        ; roundNum[0] ;
+; Maximum fan-out                             ; 785         ;
+; Total fan-out                               ; 39007       ;
+; Average fan-out                             ; 4.44        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                 ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------+-------------+--------------+
+; |aesEncrypt                ; 7455 (1644)         ; 288 (288)                 ; 0                 ; 16         ; 513  ; 0            ; |aesEncrypt                                         ; aesEncrypt  ; work         ;
+;    |SubBytes:s_final|      ; 1083 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final                        ; SubBytes    ; work         ;
+;       |sbox:b0|            ; 80 (80)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b0                ; sbox        ; work         ;
+;       |sbox:b10|           ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b10               ; sbox        ; work         ;
+;       |sbox:b11|           ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b11               ; sbox        ; work         ;
+;       |sbox:b12|           ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b12               ; sbox        ; work         ;
+;       |sbox:b13|           ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b13               ; sbox        ; work         ;
+;       |sbox:b14|           ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b14               ; sbox        ; work         ;
+;       |sbox:b15|           ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b15               ; sbox        ; work         ;
+;       |sbox:b1|            ; 80 (80)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b1                ; sbox        ; work         ;
+;       |sbox:b2|            ; 80 (80)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b2                ; sbox        ; work         ;
+;       |sbox:b3|            ; 75 (75)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b3                ; sbox        ; work         ;
+;       |sbox:b4|            ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b4                ; sbox        ; work         ;
+;       |sbox:b5|            ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b5                ; sbox        ; work         ;
+;       |sbox:b6|            ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b6                ; sbox        ; work         ;
+;       |sbox:b7|            ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b7                ; sbox        ; work         ;
+;       |sbox:b8|            ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b8                ; sbox        ; work         ;
+;       |sbox:b9|            ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|SubBytes:s_final|sbox:b9                ; sbox        ; work         ;
+;    |keySchedule:ke|        ; 3438 (3438)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|keySchedule:ke                          ; keySchedule ; work         ;
+;    |round:rndx|            ; 1290 (290)          ; 0 (0)                     ; 0                 ; 16         ; 0    ; 0            ; |aesEncrypt|round:rndx                              ; round       ; work         ;
+;       |MixColumns:mx|      ; 0 (0)               ; 0 (0)                     ; 0                 ; 16         ; 0    ; 0            ; |aesEncrypt|round:rndx|MixColumns:mx                ; MixColumns  ; work         ;
+;          |MxColumns:mix0|  ; 0 (0)               ; 0 (0)                     ; 0                 ; 4          ; 0    ; 0            ; |aesEncrypt|round:rndx|MixColumns:mx|MxColumns:mix0 ; MxColumns   ; work         ;
+;          |MxColumns:mix1|  ; 0 (0)               ; 0 (0)                     ; 0                 ; 4          ; 0    ; 0            ; |aesEncrypt|round:rndx|MixColumns:mx|MxColumns:mix1 ; MxColumns   ; work         ;
+;          |MxColumns:mix2|  ; 0 (0)               ; 0 (0)                     ; 0                 ; 4          ; 0    ; 0            ; |aesEncrypt|round:rndx|MixColumns:mx|MxColumns:mix2 ; MxColumns   ; work         ;
+;          |MxColumns:mix3|  ; 0 (0)               ; 0 (0)                     ; 0                 ; 4          ; 0    ; 0            ; |aesEncrypt|round:rndx|MixColumns:mx|MxColumns:mix3 ; MxColumns   ; work         ;
+;       |SubBytes:s|         ; 1000 (0)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s                   ; SubBytes    ; work         ;
+;          |sbox:b0|         ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b0           ; sbox        ; work         ;
+;          |sbox:b10|        ; 61 (61)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b10          ; sbox        ; work         ;
+;          |sbox:b11|        ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b11          ; sbox        ; work         ;
+;          |sbox:b12|        ; 62 (62)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b12          ; sbox        ; work         ;
+;          |sbox:b13|        ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b13          ; sbox        ; work         ;
+;          |sbox:b14|        ; 61 (61)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b14          ; sbox        ; work         ;
+;          |sbox:b15|        ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b15          ; sbox        ; work         ;
+;          |sbox:b1|         ; 61 (61)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b1           ; sbox        ; work         ;
+;          |sbox:b2|         ; 64 (64)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b2           ; sbox        ; work         ;
+;          |sbox:b3|         ; 62 (62)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b3           ; sbox        ; work         ;
+;          |sbox:b4|         ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b4           ; sbox        ; work         ;
+;          |sbox:b5|         ; 62 (62)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b5           ; sbox        ; work         ;
+;          |sbox:b6|         ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b6           ; sbox        ; work         ;
+;          |sbox:b7|         ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b7           ; sbox        ; work         ;
+;          |sbox:b8|         ; 62 (62)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b8           ; sbox        ; work         ;
+;          |sbox:b9|         ; 63 (63)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b9           ; sbox        ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary  ;
++---------------------------------+-------------+
+; Statistic                       ; Number Used ;
++---------------------------------+-------------+
+; Independent 9x9                 ; 16          ;
+; Total number of DSP blocks      ; 16          ;
+;                                 ;             ;
+; Fixed Point Unsigned Multiplier ; 16          ;
++---------------------------------+-------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 288   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 128   ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 288   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 3:1                ; 128 bits  ; 256 LEs       ; 0 LEs                ; 256 LEs                ; Yes        ; |aesEncrypt|InstatesReg[40]                           ;
+; 32:1               ; 128 bits  ; 2688 LEs      ; 1280 LEs             ; 1408 LEs               ; No         ; |aesEncrypt|Mux244                                    ;
+; 32:1               ; 128 bits  ; 2688 LEs      ; 1280 LEs             ; 1408 LEs               ; No         ; |aesEncrypt|Mux25                                     ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b4|sboxRes[1]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b9|sboxRes[1]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b14|sboxRes[6]      ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 266 LEs              ; 74 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b3|sboxRes[1]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b8|sboxRes[1]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b13|sboxRes[6]      ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 260 LEs              ; 80 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b2|sboxRes[1]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b7|sboxRes[6]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b12|sboxRes[6]      ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 260 LEs              ; 80 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b1|sboxRes[1]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b6|sboxRes[6]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b11|sboxRes[1]      ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 260 LEs              ; 80 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b0|sboxRes[6]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b5|sboxRes[6]       ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b10|sboxRes[1]      ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|SubBytes:s_final|sbox:b15|sboxRes[1]      ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b7|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b8|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b2|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b13|sboxRes[6] ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b12|sboxRes[1] ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b1|sboxRes[6]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b11|sboxRes[6] ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b6|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b5|sboxRes[6]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b10|sboxRes[6] ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b0|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b15|sboxRes[1] ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b14|sboxRes[6] ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b3|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b9|sboxRes[1]  ;
+; 256:1              ; 2 bits    ; 340 LEs       ; 272 LEs              ; 68 LEs                 ; No         ; |aesEncrypt|round:rndx|SubBytes:s|sbox:b4|sboxRes[1]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |aesEncrypt ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; Nr             ; 14    ; Signed Integer                                    ;
+; Nk             ; 8     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: keySchedule:ke ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; Nr             ; 14    ; Signed Integer                     ;
+; Nk             ; 8     ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 288                         ;
+;     ENA               ; 160                         ;
+;     ENA SLD           ; 128                         ;
+; arriav_lcell_comb     ; 7455                        ;
+;     arith             ; 32                          ;
+;         1 data inputs ; 32                          ;
+;     extend            ; 92                          ;
+;         7 data inputs ; 92                          ;
+;     normal            ; 7331                        ;
+;         2 data inputs ; 954                         ;
+;         3 data inputs ; 753                         ;
+;         4 data inputs ; 449                         ;
+;         5 data inputs ; 490                         ;
+;         6 data inputs ; 4685                        ;
+; arriav_mac            ; 16                          ;
+; boundary_port         ; 513                         ;
+;                       ;                             ;
+; Max LUT depth         ; 42.00                       ;
+; Average LUT depth     ; 24.41                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:21     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Tue Apr 30 19:41:04 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aesEncrypt -c aesEncrypt
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 10 design units, including 10 entities, in source file main.v
+    Info (12023): Found entity 1: aesEncrypt File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 1
+    Info (12023): Found entity 2: keySchedule File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 58
+    Info (12023): Found entity 3: ShiftRows File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 654
+    Info (12023): Found entity 4: round File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 687
+    Info (12023): Found entity 5: MixColumns File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 707
+    Info (12023): Found entity 6: MxColumns File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 745
+    Info (12023): Found entity 7: SubBytes File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 792
+    Info (12023): Found entity 8: sbox File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 815
+    Info (12023): Found entity 9: add3 File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 1075
+    Info (12023): Found entity 10: binary_to_BCD File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 1107
+Info (12127): Elaborating entity "aesEncrypt" for the top level hierarchy
+Info (12128): Elaborating entity "keySchedule" for hierarchy "keySchedule:ke" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 19
+Info (12128): Elaborating entity "round" for hierarchy "round:rndx" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 23
+Info (12128): Elaborating entity "SubBytes" for hierarchy "round:rndx|SubBytes:s" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 701
+Info (12128): Elaborating entity "sbox" for hierarchy "round:rndx|SubBytes:s|sbox:b0" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 794
+Info (12128): Elaborating entity "ShiftRows" for hierarchy "round:rndx|ShiftRows:sr" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 702
+Info (12128): Elaborating entity "MixColumns" for hierarchy "round:rndx|MixColumns:mx" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 703
+Info (12128): Elaborating entity "MxColumns" for hierarchy "round:rndx|MixColumns:mx|MxColumns:mix0" File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 724
+Warning (10230): Verilog HDL assignment warning at main.v(770): truncated value with size 8 to match size of target (1) File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 770
+Warning (10230): Verilog HDL assignment warning at main.v(774): truncated value with size 8 to match size of target (1) File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 774
+Warning (10230): Verilog HDL assignment warning at main.v(778): truncated value with size 8 to match size of target (1) File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 778
+Warning (10230): Verilog HDL assignment warning at main.v(782): truncated value with size 8 to match size of target (1) File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 782
+Info (276014): Found 52 instances of uninferred RAM logic
+    Info (276007): RAM logic "keySchedule:ke|Ram0" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram1" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram2" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram3" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram4" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram5" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram6" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram7" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram8" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram9" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram10" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram11" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram12" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram13" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram14" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram15" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram16" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram17" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram18" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram19" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram20" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram21" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram22" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram23" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram24" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram25" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram26" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram27" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram28" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram29" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram30" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram31" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram32" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram33" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram34" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram35" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram36" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram37" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram38" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram39" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram40" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram41" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram42" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram43" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram44" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram45" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram46" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram47" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram48" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram49" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram50" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+    Info (276007): RAM logic "keySchedule:ke|Ram51" is uninferred due to asynchronous read logic File: C:/Users/youss/AES-128-Verilog/src/AESMAIn/main.v Line: 62
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/Users/youss/AES-128-Verilog/src/AESMAIn/output_files/aesEncrypt.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 8112 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 385 input pins
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 7583 logic cells
+    Info (21062): Implemented 16 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 5050 megabytes
+    Info: Processing ended: Tue Apr 30 19:41:34 2024
+    Info: Elapsed time: 00:00:30
+    Info: Total CPU time (on all processors): 00:00:32
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/youss/AES-128-Verilog/src/AESMAIn/output_files/aesEncrypt.map.smsg.
+
+
