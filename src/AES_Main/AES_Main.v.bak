@@ -1,0 +1,83 @@
+module AES_Main(
+    input clk;
+    input [1:0]keyType;
+    input wire mode);
+  localparam encrypt = 1'b0;
+  localparam decrypt = 1'b1;
+  localparam mode_128 = 2'b00;
+  localparam mode_192 = 2'b01;
+  localparam mode_256 = 2'b10;
+
+  reg [0:127]key128 = 128'h2b7e151628aed2a6abf7158809cf4f3c; //expected output 3ad77bb40d7a3660a89ecaf32466ef97
+  wire [0:1280]key128Exp;
+
+  reg [0:191]key192 192'h8e73b0f7da0e6452c810f32b809079e562f8ead2522c6b7b; //expected output bd334f1d6e45f25ff712a214571fa5cc
+  wire [0:128*12-1]key192Exp;
+
+  reg [0:255]key256 = 256'h603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4; // expected f3eed1bdb5d2a03c064b5a7e3db181f8
+  wire [0:128*14-1]key256Exp;
+
+  reg [0:127] plainText= 128'h3ad77bb40d7a3660a89ecaf32466ef97;
+  reg [0:127] cipher128= 128'h6bc1bee22e409f96e93d7e117393172a;
+  reg [0:127] cipher192= 128'hbd334f1d6e45f25ff712a214571fa5cc;
+  reg [0:127] cipher256= 128'hf3eed1bdb5d2a03c064b5a7e3db181f8;
+  wire[0:127] cipherText;
+  wire[0:127] plainTextWire;
+
+  keySchedule#(10,4) OneTwoEight(key128, key128Exp);
+  keySchedule#(12,6) OneTwoNine(key192, key192Exp);
+  keySchedule#(14,8) TwoFiveSix(key256, key256Exp);
+
+  always @(posedge clk)
+  begin
+
+    if(mode == encrypt)
+    case(keyType)
+      mode_128:
+      begin
+        generate
+          aesEncrypt#(10,4)(clk,plainText,key128,key128Exp,cipherText);
+        endgenerate
+      end
+
+      mode_192:
+      begin
+        generate
+          aesEncrypt#(12,6)(clk,plainText,key192,key192Exp,cipherText);
+        endgenerate
+      end
+
+      mode_256:
+      begin
+        generate
+          aesEncrypt#(14,8)(clk,plainText,key256,key256Exp,cipherText);
+        endgenerate
+      end
+    endcase
+
+    if(mode == decrypt)
+    case(keyType)
+      mode_128:
+      begin
+        generate
+          Decryption#(10,4)(clk,cipher128,key128,key128Exp,plainTextWire);
+        endgenerate
+      end
+
+      mode_192:
+      begin
+        generate
+          Decryption#(12,6)(clk,cipher192,key192,key192Exp,plainTextWire);
+        endgenerate
+      end
+
+      mode_256:
+      begin
+        generate
+          Decryption#(14,8)(clk,cipher256,key256,key256Exp,plainTextWire);
+        endgenerate
+      end
+    endcase
+
+  end
+endmodule

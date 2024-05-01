@@ -1,0 +1,9 @@
+Info (10281): Verilog HDL Declaration information at ShiftAdd3.v(1): object "BCD" differs only in case from object "bcd" in the same scope File: C:/Users/youss/AES-128-Verilog/src/ShiftAdd3/ShiftAdd3.v Line: 1
+Info (10281): Verilog HDL Declaration information at main.v(746): object "A0" differs only in case from object "a0" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 746
+Info (10281): Verilog HDL Declaration information at main.v(747): object "A1" differs only in case from object "a1" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 747
+Info (10281): Verilog HDL Declaration information at main.v(748): object "A2" differs only in case from object "a2" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 748
+Info (10281): Verilog HDL Declaration information at main.v(749): object "A3" differs only in case from object "a3" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 749
+Info (10281): Verilog HDL Declaration information at main.v(751): object "B0" differs only in case from object "b0" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 751
+Info (10281): Verilog HDL Declaration information at main.v(752): object "B1" differs only in case from object "b1" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 752
+Info (10281): Verilog HDL Declaration information at main.v(753): object "B2" differs only in case from object "b2" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 753
+Info (10281): Verilog HDL Declaration information at main.v(754): object "B3" differs only in case from object "b3" in the same scope File: C:/Users/youss/AES-128-Verilog/src/AES_Encrypt/main.v Line: 754

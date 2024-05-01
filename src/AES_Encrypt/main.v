@@ -1,9 +1,9 @@
-module aesEncrypt#(parameter Nr=14,parameter Nk=8)(clk,plain_text,key,cipher_text);
+module aesEncrypt#(parameter Nr=14,parameter Nk=8)(clk,plain_text,key,fullkeys,cipher_text);
   input clk;
   input wire[0:127] plain_text;
   input wire [0:32*Nk-1] key;
   output [0:127] cipher_text;
-  wire [0:128*Nr-1] fullkeys;
+  input wire [0:128*Nr-1] fullkeys;
   wire [0:127] Instates;
   reg [0:127] InstatesReg = 0;
   assign Instates = InstatesReg;
@@ -16,7 +16,6 @@ module aesEncrypt#(parameter Nr=14,parameter Nk=8)(clk,plain_text,key,cipher_tex
   wire [0:127] afterSubBFinal;
   wire [0:127] afterShiftRowsFinal;
   integer roundNum=0;
-  keySchedule #(Nr,Nk) ke (key,fullkeys);
 
 
   //intermediate steps

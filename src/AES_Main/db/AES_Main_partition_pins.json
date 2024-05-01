@@ -1,0 +1,65 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "shift3Output[0]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[1]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[2]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[3]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[4]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[5]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[6]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[7]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[8]",
+					"strict" : false
+				},
+				{
+					"name" : "shift3Output[9]",
+					"strict" : false
+				},
+				{
+					"name" : "keyType[1]",
+					"strict" : false
+				},
+				{
+					"name" : "keyType[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mode",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
