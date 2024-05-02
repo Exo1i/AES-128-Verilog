@@ -1,7 +1,7 @@
 module Decryption#(parameter Nr=10,parameter Nk=4)(clk,cipherText,key,fullkeys,plainText);
   input clk;
   input wire[127:0] cipherText;
-  input wire [32*Nk-1:0] key;
+  input wire [0:32*Nk-1] key;
   output [127:0] plainText;
   input wire [128*Nr-1:0] fullkeys;
   wire [127:0] Instates;
@@ -24,7 +24,7 @@ module Decryption#(parameter Nr=10,parameter Nk=4)(clk,cipherText,key,fullkeys,p
   //final rounds' steps
   InvSubBytes s_final(subBytesFinalStateWire, afterSubBFinal);
   InverseShiftRows sr_final(afterSubBFinal, afterShiftRowsFinal);
-  assign plainText = addRoundKey(afterShiftRowsFinal, key);
+  assign plainText = addRoundKey(afterShiftRowsFinal, key[0:127]);
 
 
   always@(posedge clk)
@@ -476,7 +476,6 @@ module Decryption_Round(in,key,out);
 
   InvSubBytes s(in,afterSubBytes);
   InverseShiftRows r(afterSubBytes,afterShiftRows);
-  OrgMixColumns m(afterShiftRows,afterMixColumns);
-  assign out = addRoundKey (afterMixColumns,key);
+  OrgMixColumns m( addRoundKey (afterShiftRows,key),out);
 
 endmodule

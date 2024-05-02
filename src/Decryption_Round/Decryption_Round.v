@@ -1,17 +1,37 @@
-module Decryption_Round(in,key,out);
+module Decryption_Round (
+    in,
+    key,
+    out
+);
 
-input [127:0] in;
-output [127:0] out;
-input [127:0] key;
+  input [127:0] in;
+  output [127:0] out;
+  input [127:0] key;
 
-wire [127:0] afterSubBytes;
-wire [127:0] afterShiftRows;
-wire [127:0] afterMixColumns;
-wire [127:0] afterAddroundKey;
+  function [127:0] addRoundKey;
+    input [127:0] crtState;
+    input [127:0] crtRoundKey;
+    begin
+      addRoundKey = crtState ^ crtRoundKey;
+    end
+  endfunction
 
-InvSubBytes s(in,afterSubBytes);
-InverseShiftRows r(afterSubBytes,afterShiftRows);
-InvMixColumns m(afterShiftRows,afterMixColumns);
-addRoundKey b(afterMixColumns,out,key);
-		
+  wire [127:0] afterSubBytes;
+  wire [127:0] afterShiftRows;
+  wire [127:0] afterMixColumns;
+  wire [127:0] afterAddroundKey;
+
+  InvSubBytes s (
+      in,
+      afterSubBytes
+  );
+  InverseShiftRows r (
+      afterSubBytes,
+      afterShiftRows
+  );
+  OrgMixColumns m (
+      addRoundKey (afterShiftRows, key),
+      out
+  );
+
 endmodule
