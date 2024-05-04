@@ -1,60 +1,146 @@
-module Decryption#(parameter Nr=10,parameter Nk=4)(clk,cipherText,key,fullkeys,plainText);
+module Decryption #(
+    parameter Nr = 10,
+    parameter Nk = 4
+) (
+    clk,
+    cipherText,
+    key,
+    fullkeys,
+    plainText,
+    sevenSegmentOutput
+);
   input clk;
-  input wire[127:0] cipherText;
+  input wire [127:0] cipherText;
   input wire [0:32*Nk-1] key;
-  output [127:0] plainText;
+  output [0:127] plainText;
   input wire [128*Nr-1:0] fullkeys;
-  wire [127:0] Instates;
-  reg [127:0] InstatesReg = 0;
+  output [20:0] sevenSegmentOutput;
+
+  wire [0:127] Instates;
+  reg  [0:127] InstatesReg = 0;
   assign Instates = InstatesReg;
 
-  wire [127:0] Outstates;
+  wire [0:127] Outstates;
 
-  wire [127:0] subBytesFinalStateWire;
-  reg [127:0] subBytesFinalStateReg;
+  wire [0:127] subBytesFinalStateWire;
+  reg  [0:127] subBytesFinalStateReg;
   assign subBytesFinalStateWire = subBytesFinalStateReg;
-  wire [127:0] afterSubBFinal;
-  wire [127:0] afterShiftRowsFinal;
-  integer roundNum=0;
+  wire [0:127] afterSubBFinal;
+  wire [0:127] afterShiftRowsFinal;
+  integer roundNum = 0;
 
 
   //intermediate steps
-  Decryption_Round rndx(Instates,fullkeys[(roundNum)*128+:128],Outstates);
+  Decryption_Round rndx (
+      Instates,
+      fullkeys[(roundNum)*128+:128],
+      Outstates
+  );
 
   //final rounds' steps
-  InvSubBytes s_final(subBytesFinalStateWire, afterSubBFinal);
-  InverseShiftRows sr_final(afterSubBFinal, afterShiftRowsFinal);
+  InvSubBytes s_final (
+      subBytesFinalStateWire,
+      afterSubBFinal
+  );
+  InverseShiftRows sr_final (
+      afterSubBFinal,
+      afterShiftRowsFinal
+  );
   assign plainText = addRoundKey(afterShiftRowsFinal, key[0:127]);
 
+  reg [20:0] sevenSegmentOutputReg;
+  assign sevenSegmentOutput = sevenSegmentOutputReg;
 
-  always@(posedge clk)
-  begin
-    if(roundNum ==0)
-    begin
-      InstatesReg=cipherText^fullkeys[0+:128];
-      roundNum=roundNum+1;
-    end
-    else if(roundNum <Nr-1)
-    begin
-      InstatesReg=Outstates;
-      roundNum=roundNum+1;
-    end
-    else if(roundNum==Nr-1)
-    begin
-      subBytesFinalStateReg=Outstates;
-    end
+  always @* begin
+    if (roundNum <= Nr - 1) sevenSegmentOutputReg = hexDisplayFunc(Instates[127-:8]);
+    else if (roundNum == Nr) sevenSegmentOutputReg = hexDisplayFunc(subBytesFinalStateReg[127-:8]);
   end
 
-  function [127:0]addRoundKey;
-    input [127:0] crtState;
-    input [127:0] crtRoundKey;
+  always @(posedge clk) begin
+    if (roundNum == 0) begin
+      InstatesReg = cipherText ^ fullkeys[0+:128];
+      roundNum = roundNum + 1;
+    end else if (roundNum < Nr - 1) begin
+      InstatesReg = Outstates;
+      roundNum = roundNum + 1;
+    end else if (roundNum == Nr - 1) begin
+      subBytesFinalStateReg = Outstates;
+      roundNum = roundNum + 1;
+    end else sevenSegmentOutputReg = hexDisplayFunc(plainText[127-:8]);
+  end
+
+  function [0:127] addRoundKey;
+    input [0:127] crtState;
+    input [0:127] crtRoundKey;
     begin
-      addRoundKey = crtState^crtRoundKey;
+      addRoundKey = crtState ^ crtRoundKey;
     end
   endfunction
+
+
+  //helper function for displaying the last byte on 3 ss
+  function [20:0] hexDisplayFunc;
+    input [7:0] in;
+    reg [11:0] temp;
+
+    begin
+      temp = ShiftAdd3(in);
+      hexDisplayFunc[0+:7] = segment7(temp[0+:4]);
+      hexDisplayFunc[7+:7] = segment7(temp[4+:4]);
+      hexDisplayFunc[14+:7] = segment7(temp[8+:4]);
+    end
+
+  endfunction
+  function [6:0] segment7;
+
+    input [3:0] ssOutput;
+
+    begin
+      case (ssOutput)
+        4'b0001: segment7 = 7'b1111001;  // 1
+        4'b0010: segment7 = 7'b0100100;  // 2
+        4'b0011: segment7 = 7'b0110000;  // 3
+        4'b0100: segment7 = 7'b0011001;  // 4
+        4'b0101: segment7 = 7'b0010010;  // 5
+        4'b0110: segment7 = 7'b0000010;  // 6
+        4'b0111: segment7 = 7'b0111000;  // 7
+        4'b1000: segment7 = 7'b0000000;  // 8
+        4'b1001: segment7 = 7'b0011000;  // 9
+
+        default: segment7 = 7'b1111111;  // Blank display
+      endcase
+    end
+
+  endfunction
+
+  function [11:0] ShiftAdd3;
+    input [7:0] in;
+
+    integer i;
+    begin
+      ShiftAdd3 = 0;
+
+      for (i = 0; i < 8; i = i + 1) begin
+        ShiftAdd3 = {ShiftAdd3[10:0], in[7-i]};
+        if (i < 7 && ShiftAdd3[3:0] > 4'b0100) begin
+          ShiftAdd3[3:0] = ShiftAdd3[3:0] + 4'b0011;
+        end
+        if (i < 7 && ShiftAdd3[7:4] > 4'b0100) begin
+          ShiftAdd3[7:4] = ShiftAdd3[7:4] + 4'b0011;
+        end
+        if (i < 7 && ShiftAdd3[11:8] > 4'b0100) begin
+          ShiftAdd3[11:8] = ShiftAdd3[11:8] + 4'b0011;
+        end
+      end
+    end
+  endfunction
+
 endmodule
 
-module OrgMixColumns(A,B);
+module OrgMixColumns (
+    A,
+    B
+);
 
   input [127:0] A;
   output [127:0] B;
@@ -70,44 +156,84 @@ module OrgMixColumns(A,B);
   wire [31:0] output_wires[3:0];
 
   // Instantiate the MixColumns module four times
-  InvMixColumns mix0(input_wires[0][31:24], input_wires[0][23:16], input_wires[0][15:8], input_wires[0][7:0],
-                     output_wires[3][31:24], output_wires[3][23:16], output_wires[3][15:8], output_wires[3][7:0]);
+  InvMixColumns mix0 (
+      input_wires[0][31:24],
+      input_wires[0][23:16],
+      input_wires[0][15:8],
+      input_wires[0][7:0],
+      output_wires[3][31:24],
+      output_wires[3][23:16],
+      output_wires[3][15:8],
+      output_wires[3][7:0]
+  );
 
-  InvMixColumns mix1(input_wires[1][31:24], input_wires[1][23:16], input_wires[1][15:8], input_wires[1][7:0],
-                     output_wires[2][31:24], output_wires[2][23:16], output_wires[2][15:8], output_wires[2][7:0]);
+  InvMixColumns mix1 (
+      input_wires[1][31:24],
+      input_wires[1][23:16],
+      input_wires[1][15:8],
+      input_wires[1][7:0],
+      output_wires[2][31:24],
+      output_wires[2][23:16],
+      output_wires[2][15:8],
+      output_wires[2][7:0]
+  );
 
-  InvMixColumns mix2(input_wires[2][31:24], input_wires[2][23:16], input_wires[2][15:8], input_wires[2][7:0],
-                     output_wires[1][31:24], output_wires[1][23:16], output_wires[1][15:8], output_wires[1][7:0]);
+  InvMixColumns mix2 (
+      input_wires[2][31:24],
+      input_wires[2][23:16],
+      input_wires[2][15:8],
+      input_wires[2][7:0],
+      output_wires[1][31:24],
+      output_wires[1][23:16],
+      output_wires[1][15:8],
+      output_wires[1][7:0]
+  );
 
-  InvMixColumns mix3(input_wires[3][31:24], input_wires[3][23:16], input_wires[3][15:8], input_wires[3][7:0],
-                     output_wires[0][31:24], output_wires[0][23:16], output_wires[0][15:8], output_wires[0][7:0]);
+  InvMixColumns mix3 (
+      input_wires[3][31:24],
+      input_wires[3][23:16],
+      input_wires[3][15:8],
+      input_wires[3][7:0],
+      output_wires[0][31:24],
+      output_wires[0][23:16],
+      output_wires[0][15:8],
+      output_wires[0][7:0]
+  );
 
   // Combine the 32-bit segments into the 128-bit output
   assign B[127:96] = output_wires[3];
-  assign B[95:64] = output_wires[2];
-  assign B[63:32] = output_wires[1];
-  assign B[31:0] = output_wires[0];
+  assign B[95:64]  = output_wires[2];
+  assign B[63:32]  = output_wires[1];
+  assign B[31:0]   = output_wires[0];
 
 endmodule
 
 
-module InvMixColumns (A0,A1,A2,A3,B0,B1,B2,B3);
+module InvMixColumns (
+    A0,
+    A1,
+    A2,
+    A3,
+    B0,
+    B1,
+    B2,
+    B3
+);
 
-  input [7:0]A0;
-  input [7:0]A1;
-  input [7:0]A2;
-  input [7:0]A3;
+  input [7:0] A0;
+  input [7:0] A1;
+  input [7:0] A2;
+  input [7:0] A3;
 
-  output [7:0]B0;
-  output [7:0]B1;
-  output [7:0]B2;
-  output [7:0]B3;
+  output [7:0] B0;
+  output [7:0] B1;
+  output [7:0] B2;
+  output [7:0] B3;
 
-  function [7:0] xtime(input [7:0] A,input integer n);
+  function [7:0] xtime(input [7:0] A, input integer n);
     integer i;
     begin
-      for(i = 0;i < n;i = i + 1)
-      begin
+      for (i = 0; i < n; i = i + 1) begin
         A = (A << 1) ^ (((A >> 7) & 1) * 8'h1b);
       end
       xtime = A;
@@ -116,22 +242,22 @@ module InvMixColumns (A0,A1,A2,A3,B0,B1,B2,B3);
 
   function [7:0] xtime0e(input [7:0] A);
     begin
-      xtime0e = xtime(A,3) ^ xtime(A,2) ^ xtime(A,1);
+      xtime0e = xtime(A, 3) ^ xtime(A, 2) ^ xtime(A, 1);
     end
   endfunction
   function [7:0] xtime0b(input [7:0] A);
     begin
-      xtime0b = xtime(A,3) ^ xtime(A,1) ^ A;
+      xtime0b = xtime(A, 3) ^ xtime(A, 1) ^ A;
     end
   endfunction
   function [7:0] xtime0d(input [7:0] A);
     begin
-      xtime0d = xtime(A,3) ^ xtime(A,2) ^ A;
+      xtime0d = xtime(A, 3) ^ xtime(A, 2) ^ A;
     end
   endfunction
   function [7:0] xtime09(input [7:0] A);
     begin
-      xtime09 = xtime(A,3) ^ A;
+      xtime09 = xtime(A, 3) ^ A;
     end
   endfunction
 
@@ -144,58 +270,115 @@ module InvMixColumns (A0,A1,A2,A3,B0,B1,B2,B3);
 
 endmodule
 
-module InverseShiftRows (shiftedState, originalState);
+module InverseShiftRows (
+    shiftedState,
+    originalState
+);
   input [0:127] shiftedState;
   output [0:127] originalState;
 
   // First row (r = 0) is not shifted
-  assign originalState[0+:8] = shiftedState[0+:8];
-  assign originalState[32+:8] = shiftedState[32+:8];
-  assign originalState[64+:8] = shiftedState[64+:8];
-  assign originalState[96+:8] = shiftedState[96+:8];
+  assign originalState[0+:8]   = shiftedState[0+:8];
+  assign originalState[32+:8]  = shiftedState[32+:8];
+  assign originalState[64+:8]  = shiftedState[64+:8];
+  assign originalState[96+:8]  = shiftedState[96+:8];
 
   // Second row (r = 1) is cyclically right shifted by 1 offset
-  assign originalState[8+:8] = shiftedState[104+:8];
-  assign originalState[40+:8] = shiftedState[8+:8];
-  assign originalState[72+:8] = shiftedState[40+:8];
+  assign originalState[8+:8]   = shiftedState[104+:8];
+  assign originalState[40+:8]  = shiftedState[8+:8];
+  assign originalState[72+:8]  = shiftedState[40+:8];
   assign originalState[104+:8] = shiftedState[72+:8];
 
   // Third row (r = 2) is cyclically right shifted by 2 offsets
-  assign originalState[16+:8] = shiftedState[80+:8];
-  assign originalState[48+:8] = shiftedState[112+:8];
-  assign originalState[80+:8] = shiftedState[16+:8];
+  assign originalState[16+:8]  = shiftedState[80+:8];
+  assign originalState[48+:8]  = shiftedState[112+:8];
+  assign originalState[80+:8]  = shiftedState[16+:8];
   assign originalState[112+:8] = shiftedState[48+:8];
 
   // Fourth row (r = 3) is cyclically right shifted by 3 offsets
-  assign originalState[24+:8] = shiftedState[56+:8];
-  assign originalState[56+:8] = shiftedState[88+:8];
-  assign originalState[88+:8] = shiftedState[120+:8];
+  assign originalState[24+:8]  = shiftedState[56+:8];
+  assign originalState[56+:8]  = shiftedState[88+:8];
+  assign originalState[88+:8]  = shiftedState[120+:8];
   assign originalState[120+:8] = shiftedState[24+:8];
 
 endmodule
 
-module InvSubBytes(input [127:0] state , output [127:0] newState);
+module InvSubBytes (
+    input  [127:0] state,
+    output [127:0] newState
+);
 
-  inverse_sbox b0(state[7:0] , newState[7:0]);
-  inverse_sbox b1(state[15:8] , newState[15:8]);
-  inverse_sbox b2(state[23:16] , newState[23:16]);
-  inverse_sbox b3(state[31:24] , newState[31:24]);
-  inverse_sbox b4(state[39:32] , newState[39:32]);
-  inverse_sbox b5(state[47:40] , newState[47:40]);
-  inverse_sbox b6(state[55:48] , newState[55:48]);
-  inverse_sbox b7(state[63:56] , newState[63:56]);
-  inverse_sbox b8(state[71:64] , newState[71:64]);
-  inverse_sbox b9(state[79:72] , newState[79:72]);
-  inverse_sbox b10(state[87:80] , newState[87:80]);
-  inverse_sbox b11(state[95:88] , newState[95:88]);
-  inverse_sbox b12(state[103:96] , newState[103:96]);
-  inverse_sbox b13(state[111:104] , newState[111:104]);
-  inverse_sbox b14(state[119:112] , newState[119:112]);
-  inverse_sbox b15(state[127:120] , newState[127:120]);
+  inverse_sbox b0 (
+      state[7:0],
+      newState[7:0]
+  );
+  inverse_sbox b1 (
+      state[15:8],
+      newState[15:8]
+  );
+  inverse_sbox b2 (
+      state[23:16],
+      newState[23:16]
+  );
+  inverse_sbox b3 (
+      state[31:24],
+      newState[31:24]
+  );
+  inverse_sbox b4 (
+      state[39:32],
+      newState[39:32]
+  );
+  inverse_sbox b5 (
+      state[47:40],
+      newState[47:40]
+  );
+  inverse_sbox b6 (
+      state[55:48],
+      newState[55:48]
+  );
+  inverse_sbox b7 (
+      state[63:56],
+      newState[63:56]
+  );
+  inverse_sbox b8 (
+      state[71:64],
+      newState[71:64]
+  );
+  inverse_sbox b9 (
+      state[79:72],
+      newState[79:72]
+  );
+  inverse_sbox b10 (
+      state[87:80],
+      newState[87:80]
+  );
+  inverse_sbox b11 (
+      state[95:88],
+      newState[95:88]
+  );
+  inverse_sbox b12 (
+      state[103:96],
+      newState[103:96]
+  );
+  inverse_sbox b13 (
+      state[111:104],
+      newState[111:104]
+  );
+  inverse_sbox b14 (
+      state[119:112],
+      newState[119:112]
+  );
+  inverse_sbox b15 (
+      state[127:120],
+      newState[127:120]
+  );
 endmodule
 
 
-module inverse_sbox( input wire [7:0] givenData, output wire [7:0] sboxRes);
+module inverse_sbox (
+    input  wire [7:0] givenData,
+    output wire [7:0] sboxRes
+);
 
   assign sboxRes = (givenData == 8'h63) ? 8'h00 :
          (givenData == 8'h7c) ? 8'h01 :
@@ -455,17 +638,21 @@ module inverse_sbox( input wire [7:0] givenData, output wire [7:0] sboxRes);
 
 endmodule
 
-module Decryption_Round(in,key,out);
+module Decryption_Round (
+    in,
+    key,
+    out
+);
 
   input [127:0] in;
   output [127:0] out;
   input [127:0] key;
 
-  function [127:0]addRoundKey;
+  function [127:0] addRoundKey;
     input [127:0] crtState;
     input [127:0] crtRoundKey;
     begin
-      addRoundKey = crtState^crtRoundKey;
+      addRoundKey = crtState ^ crtRoundKey;
     end
   endfunction
 
@@ -474,8 +661,17 @@ module Decryption_Round(in,key,out);
   wire [127:0] afterMixColumns;
   wire [127:0] afterAddroundKey;
 
-  InvSubBytes s(in,afterSubBytes);
-  InverseShiftRows r(afterSubBytes,afterShiftRows);
-  OrgMixColumns m( addRoundKey (afterShiftRows,key),out);
+  InvSubBytes s (
+      in,
+      afterSubBytes
+  );
+  InverseShiftRows r (
+      afterSubBytes,
+      afterShiftRows
+  );
+  OrgMixColumns m (
+      addRoundKey (afterShiftRows, key),
+      out
+  );
 
 endmodule

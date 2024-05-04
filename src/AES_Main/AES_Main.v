@@ -2,7 +2,7 @@ module AES_Main (
     input clk,
     input [1:0] keyType,
     input wire mode,
-    output wire [20:0] sevenSegmentOutput
+    output [20:0] sevenSegmentOutput
 );
 
   // just some local params to check key type and modes
@@ -52,6 +52,15 @@ module AES_Main (
   reg clkEncrypt192 = 0;
   reg clkEncrypt256 = 0;
 
+
+  wire [20:0] sevenSegmentOutput1;
+  wire [20:0] sevenSegmentOutput2;
+  wire [20:0] sevenSegmentOutput3;
+  wire [20:0] sevenSegmentOutput4;
+  wire [20:0] sevenSegmentOutput5;
+  wire [20:0] sevenSegmentOutput6;
+
+
   //expanding the keys before running the main stages
   keySchedule #(10, 4) exp128 (
       key128,
@@ -66,27 +75,30 @@ module AES_Main (
       key256Exp
   );
 
-  //instantiate all modules, but no output untill their clk is ready
+  //instantiate all modules, but no output until their clk is ready
   aesEncrypt #(10, 4) enc128 (
       clkEncrypt128,
       plainText,
       key128,
       key128Exp,
-      cipherText1
+      cipherText1,
+      sevenSegmentOutput1
   );
   aesEncrypt #(12, 6) enc192 (
       clkEncrypt192,
       plainText,
       key192,
       key192Exp,
-      cipherText2
+      cipherText2,
+      sevenSegmentOutput2
   );
   aesEncrypt #(14, 8) enc256 (
       clkEncrypt256,
       plainText,
       key256,
       key256Exp,
-      cipherText3
+      cipherText3,
+      sevenSegmentOutput3
   );
 
   Decryption #(10, 4) dec128 (
@@ -94,21 +106,24 @@ module AES_Main (
       cipher128,
       key128,
       key128Exp,
-      plainTextWire1
+      plainTextWire1,
+      sevenSegmentOutput4
   );
   Decryption #(12, 6) dec192 (
       clkDecrypt192,
       cipher192,
       key192,
       key192Exp,
-      plainTextWire2
+      plainTextWire2,
+      sevenSegmentOutput5
   );
   Decryption #(14, 8) dec256 (
       clkDecrypt256,
       cipher256,
       key256,
       key256Exp,
-      plainTextWire3
+      plainTextWire3,
+      sevenSegmentOutput6
   );
 
   //creating reg for 7-segments output
@@ -124,8 +139,11 @@ module AES_Main (
           if (roundNum == 0) clkEncrypt128 = clk;
           else clkEncrypt128 = ~clkEncrypt128;
 
-          if (roundNum < 10) roundNum = roundNum + 1;
-          else if (roundNum == 10) sevenSegmentOutputReg = hexDisplayFunc(cipherText1[127-:8]);
+          if (roundNum < 10) begin
+            sevenSegmentOutputReg = sevenSegmentOutput1;
+            roundNum = roundNum + 1;
+          end else #1 roundNum = roundNum + 1;
+
           clkEncrypt128 <= ~clkEncrypt128;
         end
 
@@ -133,8 +151,10 @@ module AES_Main (
           if (roundNum == 0) clkEncrypt192 = clk;
           else clkEncrypt192 = ~clkEncrypt192;
 
-          if (roundNum < 12) roundNum = roundNum + 1;
-          else if (roundNum == 12) sevenSegmentOutputReg = hexDisplayFunc(cipherText1[127-:8]);
+          if (roundNum <= 12) begin
+            sevenSegmentOutputReg = sevenSegmentOutput2;
+            roundNum = roundNum + 1;
+          end
           clkEncrypt192 <= ~clkEncrypt192;
 
         end
@@ -143,8 +163,10 @@ module AES_Main (
           if (roundNum == 0) clkEncrypt256 = clk;
           else clkEncrypt256 = ~clkEncrypt256;
 
-          if (roundNum < 14) roundNum = roundNum + 1;
-          else if (roundNum == 14) sevenSegmentOutputReg = hexDisplayFunc(cipherText1[127-:8]);
+          if (roundNum <= 14) begin
+            sevenSegmentOutputReg = sevenSegmentOutput3;
+            roundNum = roundNum + 1;
+          end
           clkEncrypt256 <= ~clkEncrypt256;
         end
       endcase
@@ -155,8 +177,10 @@ module AES_Main (
           if (roundNum == 0) clkDecrypt128 = clk;
           else clkDecrypt128 = ~clkDecrypt128;
 
-          if (roundNum < 10) roundNum = roundNum + 1;
-          else if (roundNum == 10) sevenSegmentOutputReg = hexDisplayFunc(plainTextWire1[127-:8]);
+          if (roundNum <= 10) begin
+            sevenSegmentOutputReg = sevenSegmentOutput4;
+            roundNum = roundNum + 1;
+          end
           clkDecrypt128 <= ~clkDecrypt128;
         end
 
@@ -164,8 +188,10 @@ module AES_Main (
           if (roundNum == 0) clkDecrypt192 = clk;
           else clkDecrypt192 = ~clkDecrypt192;
 
-          if (roundNum < 12) roundNum = roundNum + 1;
-          else if (roundNum == 12) sevenSegmentOutputReg = hexDisplayFunc(plainTextWire2[127-:8]);
+          if (roundNum <= 12) begin
+            sevenSegmentOutputReg = sevenSegmentOutput5;
+            roundNum = roundNum + 1;
+          end
           clkDecrypt192 <= ~clkDecrypt192;
 
         end
@@ -174,8 +200,10 @@ module AES_Main (
           if (roundNum == 0) clkDecrypt256 = clk;
           else clkDecrypt256 = ~clkDecrypt256;
 
-          if (roundNum < 14) roundNum = roundNum + 1;
-          else if (roundNum == 14) sevenSegmentOutputReg = hexDisplayFunc(plainTextWire3[127-:8]);
+          if (roundNum <= 14) begin
+            sevenSegmentOutputReg = sevenSegmentOutput6;
+            roundNum = roundNum + 1;
+          end
           clkDecrypt256 <= ~clkDecrypt256;
         end
       endcase
