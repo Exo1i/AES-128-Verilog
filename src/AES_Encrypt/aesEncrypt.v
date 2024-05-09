@@ -3,6 +3,7 @@ module aesEncrypt #(
     parameter Nk = 4
 ) (
     clk,
+    reset,
     plain_text,
     key,
     fullkeys,
@@ -10,6 +11,7 @@ module aesEncrypt #(
     sevenSegmentOutput
 );
   input clk;
+  input reset;
   output [20:0] sevenSegmentOutput;
   // state is of fixed size 128
   input wire [0:127] plain_text;
@@ -57,19 +59,20 @@ module aesEncrypt #(
 
   assign cipher_text = addRoundKey(afterShiftRowsFinal, fullkeys[(roundNum-1)*128+:128]);
 
-  reg [20:0] sevenSegmentOutputReg;
+  reg [20:0] sevenSegmentOutputReg = 21'b1;
   assign sevenSegmentOutput = sevenSegmentOutputReg;
 
-  always @* begin
-    if (roundNum <= Nr - 1) sevenSegmentOutputReg = hexDisplayFunc(Instates[127-:8]);
+  always @(roundNum) begin
+    if (roundNum == 0) sevenSegmentOutputReg = hexDisplayFunc(plain_text[127-:8]);
+    else if (roundNum <= Nr - 1) sevenSegmentOutputReg = hexDisplayFunc(Instates[127-:8]);
     else if (roundNum == Nr) sevenSegmentOutputReg = hexDisplayFunc(subBytesFinalStateReg[127-:8]);
-
 
   end
 
 
-  always @(posedge clk) begin
-    if (roundNum == 0) begin
+  always @(posedge clk or posedge reset) begin
+    if (reset) roundNum = 0;
+    else if (roundNum == 0) begin
       InstatesReg = plain_text ^ key[0:127];
       roundNum = roundNum + 1;
 
@@ -79,7 +82,8 @@ module aesEncrypt #(
     end else if (roundNum == Nr - 1) begin
       subBytesFinalStateReg = Outstates;
       roundNum = roundNum + 1;
-    end else sevenSegmentOutputReg = hexDisplayFunc(cipher_text[127-:8]);
+    end
+
   end
 
   function [127:0] addRoundKey;
@@ -109,15 +113,16 @@ module aesEncrypt #(
 
     begin
       case (ssOutput)
+        4'b0000: segment7 = 7'b1000000;  // 1
         4'b0001: segment7 = 7'b1111001;  // 1
         4'b0010: segment7 = 7'b0100100;  // 2
         4'b0011: segment7 = 7'b0110000;  // 3
         4'b0100: segment7 = 7'b0011001;  // 4
         4'b0101: segment7 = 7'b0010010;  // 5
         4'b0110: segment7 = 7'b0000010;  // 6
-        4'b0111: segment7 = 7'b0111000;  // 7
+        4'b0111: segment7 = 7'b1111000;  // 7
         4'b1000: segment7 = 7'b0000000;  // 8
-        4'b1001: segment7 = 7'b0011000;  // 9
+        4'b1001: segment7 = 7'b0010000;  // 9
 
         default: segment7 = 7'b1111111;  // Blank display
       endcase

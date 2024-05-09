@@ -24,6 +24,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "sevenSegmentOutput[5]",
+					"strict" : false
+				},
+				{
 					"name" : "sevenSegmentOutput[6]",
 					"strict" : false
 				},
@@ -60,6 +64,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "sevenSegmentOutput[15]",
+					"strict" : false
+				},
+				{
 					"name" : "sevenSegmentOutput[16]",
 					"strict" : false
 				},
@@ -72,7 +80,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "sevenSegmentOutput[19]",
+					"strict" : false
+				},
+				{
 					"name" : "sevenSegmentOutput[20]",
+					"strict" : false
+				},
+				{
+					"name" : "isMatch",
+					"strict" : false
+				},
+				{
+					"name" : "keyType[1]",
 					"strict" : false
 				},
 				{
@@ -80,15 +100,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "mode",
-					"strict" : false
-				},
-				{
 					"name" : "clk",
 					"strict" : false
 				},
 				{
-					"name" : "keyType[1]",
+					"name" : "reset",
 					"strict" : false
 				}
 			]
