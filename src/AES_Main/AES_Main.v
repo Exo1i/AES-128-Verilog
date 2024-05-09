@@ -1,13 +1,14 @@
 module AES_Main (
     input clk,
+    input reset,
     input [1:0] keyType,
-    input wire mode,
-    output [20:0] sevenSegmentOutput
+    output [20:0] sevenSegmentOutput,
+    output isMatch
 );
 
   // just some local params to check key type and modes
-  localparam encrypt = 1'b0;
-  localparam decrypt = 1'b1;
+  // localparam encrypt = 1'b0;
+  // localparam decrypt = 1'b1;
   localparam mode_128 = 2'b00;
   localparam mode_192 = 2'b01;
   localparam mode_256 = 2'b10;
@@ -27,10 +28,10 @@ module AES_Main (
   //this is the plain text that would be encrypted by all keys.
   reg [0:127] plainText = 128'h_6bc1bee22e409f96e93d7e117393172a;
 
-  //here are the expected outputs of each encryption process
-  reg [0:127] cipher128 = 128'h3ad77bb40d7a3660a89ecaf32466ef97;
-  reg [0:127] cipher192 = 128'hbd334f1d6e45f25ff712a214571fa5cc;
-  reg [0:127] cipher256 = 128'hf3eed1bdb5d2a03c064b5a7e3db181f8;
+  // //here are the expected outputs of each encryption process
+  // reg [0:127] cipher128 = 128'h3ad77bb40d7a3660a89ecaf32466ef97;
+  // reg [0:127] cipher192 = 128'hbd334f1d6e45f25ff712a214571fa5cc;
+  // reg [0:127] cipher256 = 128'hf3eed1bdb5d2a03c064b5a7e3db181f8;
 
   //just some wires for the outputs of the encryption module
   wire [0:127] cipherText1;
@@ -43,15 +44,6 @@ module AES_Main (
   wire [0:127] plainTextWire3;
 
 
-  //seperate clocks for each process
-  reg clkDecrypt128 = 0;
-  reg clkDecrypt192 = 0;
-  reg clkDecrypt256 = 0;
-
-  reg clkEncrypt128 = 0;
-  reg clkEncrypt192 = 0;
-  reg clkEncrypt256 = 0;
-
 
   wire [20:0] sevenSegmentOutput1;
   wire [20:0] sevenSegmentOutput2;
@@ -60,40 +52,51 @@ module AES_Main (
   wire [20:0] sevenSegmentOutput5;
   wire [20:0] sevenSegmentOutput6;
 
+  reg isDecrypt = 0;
+  wire isDecryptWire;
+  assign isDecryptWire = isDecrypt;
 
   //expanding the keys before running the main stages
   keySchedule #(10, 4) exp128 (
       key128,
       key128Exp
   );
+
   keySchedule #(12, 6) exp192 (
       key192,
       key192Exp
   );
+
   keySchedule #(14, 8) exp256 (
       key256,
       key256Exp
   );
 
-  //instantiate all modules, but no output until their clk is ready
+
+  // instantiate all modules, but no output until their clk is ready
   aesEncrypt #(10, 4) enc128 (
-      clkEncrypt128,
+      clk,
+      reset,
       plainText,
       key128,
       key128Exp,
       cipherText1,
       sevenSegmentOutput1
   );
+
   aesEncrypt #(12, 6) enc192 (
-      clkEncrypt192,
+      clk,
+      reset,
       plainText,
       key192,
       key192Exp,
       cipherText2,
       sevenSegmentOutput2
   );
+
   aesEncrypt #(14, 8) enc256 (
-      clkEncrypt256,
+      clk,
+      reset,
       plainText,
       key256,
       key256Exp,
@@ -102,109 +105,99 @@ module AES_Main (
   );
 
   Decryption #(10, 4) dec128 (
-      clkDecrypt128,
-      cipher128,
+      clk,
+      reset,
+      cipherText1,
       key128,
       key128Exp,
       plainTextWire1,
-      sevenSegmentOutput4
+      sevenSegmentOutput4,
+      isDecryptWire
   );
   Decryption #(12, 6) dec192 (
-      clkDecrypt192,
-      cipher192,
+      clk,
+      reset,
+      cipherText2,
       key192,
       key192Exp,
       plainTextWire2,
-      sevenSegmentOutput5
+      sevenSegmentOutput5,
+      isDecryptWire
   );
+
   Decryption #(14, 8) dec256 (
-      clkDecrypt256,
-      cipher256,
+      clk,
+      reset,
+      cipherText3,
       key256,
       key256Exp,
       plainTextWire3,
-      sevenSegmentOutput6
+      sevenSegmentOutput6,
+      isDecryptWire
   );
 
   //creating reg for 7-segments output
   reg [20:0] sevenSegmentOutputReg;
+  initial sevenSegmentOutputReg[20:0] = 21'b111111111111111111111;
   assign sevenSegmentOutput = sevenSegmentOutputReg;
 
+  reg isMatchReg = 0;
+  assign isMatch = isMatchReg;
   integer roundNum = 0;
-  always @(posedge clk) begin
-    if (mode == encrypt) begin
-
+  always @(posedge clk or posedge reset) begin
+    if (reset) begin
+      roundNum   = 0;
+      isDecrypt  = 0;
+      isMatchReg = 0;
+    end else begin
       case (keyType)
         mode_128: begin
-          if (roundNum == 0) clkEncrypt128 = clk;
-          else clkEncrypt128 = ~clkEncrypt128;
-
-          if (roundNum < 10) begin
+          if (roundNum <= 10) begin
             sevenSegmentOutputReg = sevenSegmentOutput1;
             roundNum = roundNum + 1;
-          end else #1 roundNum = roundNum + 1;
-
-          clkEncrypt128 <= ~clkEncrypt128;
+          end else if (roundNum == 11) begin
+            sevenSegmentOutputReg = hexDisplayFunc(cipherText1[127-:8]);
+            roundNum = roundNum + 1;
+            isDecrypt <= 1;
+          end else if (roundNum <= 22) begin
+            sevenSegmentOutputReg = sevenSegmentOutput4;
+            roundNum = roundNum + 1;
+          end else if (roundNum == 23) begin
+            sevenSegmentOutputReg = hexDisplayFunc(plainTextWire1[127-:8]);
+            if (plainTextWire1 == plainText) isMatchReg = 1;
+          end
         end
-
         mode_192: begin
-          if (roundNum == 0) clkEncrypt192 = clk;
-          else clkEncrypt192 = ~clkEncrypt192;
-
           if (roundNum <= 12) begin
             sevenSegmentOutputReg = sevenSegmentOutput2;
             roundNum = roundNum + 1;
+          end else if (roundNum == 13) begin
+            sevenSegmentOutputReg = hexDisplayFunc(cipherText2[127-:8]);
+            roundNum = roundNum + 1;
+            isDecrypt <= 1;
+          end else if (roundNum <= 26) begin
+            sevenSegmentOutputReg = sevenSegmentOutput5;
+            roundNum = roundNum + 1;
+          end else if (roundNum == 27) begin
+            sevenSegmentOutputReg = hexDisplayFunc(plainTextWire2[127-:8]);
+            if (plainTextWire2 == plainText) isMatchReg = 1;
           end
-          clkEncrypt192 <= ~clkEncrypt192;
-
         end
-
         mode_256: begin
-          if (roundNum == 0) clkEncrypt256 = clk;
-          else clkEncrypt256 = ~clkEncrypt256;
-
           if (roundNum <= 14) begin
             sevenSegmentOutputReg = sevenSegmentOutput3;
             roundNum = roundNum + 1;
-          end
-          clkEncrypt256 <= ~clkEncrypt256;
-        end
-      endcase
-
-    end else if (mode == decrypt) begin
-      case (keyType)
-        mode_128: begin
-          if (roundNum == 0) clkDecrypt128 = clk;
-          else clkDecrypt128 = ~clkDecrypt128;
-
-          if (roundNum <= 10) begin
-            sevenSegmentOutputReg = sevenSegmentOutput4;
+          end else if (roundNum == 15) begin
+            sevenSegmentOutputReg = hexDisplayFunc(cipherText3[127-:8]);
             roundNum = roundNum + 1;
-          end
-          clkDecrypt128 <= ~clkDecrypt128;
-        end
-
-        mode_192: begin
-          if (roundNum == 0) clkDecrypt192 = clk;
-          else clkDecrypt192 = ~clkDecrypt192;
-
-          if (roundNum <= 12) begin
-            sevenSegmentOutputReg = sevenSegmentOutput5;
-            roundNum = roundNum + 1;
-          end
-          clkDecrypt192 <= ~clkDecrypt192;
-
-        end
-
-        mode_256: begin
-          if (roundNum == 0) clkDecrypt256 = clk;
-          else clkDecrypt256 = ~clkDecrypt256;
-
-          if (roundNum <= 14) begin
+            isDecrypt <= 1;
+          end else if (roundNum <= 30) begin
             sevenSegmentOutputReg = sevenSegmentOutput6;
             roundNum = roundNum + 1;
+          end else if (roundNum == 31) begin
+            sevenSegmentOutputReg = hexDisplayFunc(plainTextWire3[127-:8]);
+            if (plainTextWire3 == plainText) isMatchReg = 1;
           end
-          clkDecrypt256 <= ~clkDecrypt256;
         end
       endcase
 
@@ -230,15 +223,16 @@ module AES_Main (
 
     begin
       case (ssOutput)
+        4'b0000: segment7 = 7'b1000000;  // 1
         4'b0001: segment7 = 7'b1111001;  // 1
         4'b0010: segment7 = 7'b0100100;  // 2
         4'b0011: segment7 = 7'b0110000;  // 3
         4'b0100: segment7 = 7'b0011001;  // 4
         4'b0101: segment7 = 7'b0010010;  // 5
         4'b0110: segment7 = 7'b0000010;  // 6
-        4'b0111: segment7 = 7'b0111000;  // 7
+        4'b0111: segment7 = 7'b1111000;  // 7
         4'b1000: segment7 = 7'b0000000;  // 8
-        4'b1001: segment7 = 7'b0011000;  // 9
+        4'b1001: segment7 = 7'b0010000;  // 9
 
         default: segment7 = 7'b1111111;  // Blank display
       endcase

@@ -3,14 +3,18 @@ module Decryption #(
     parameter Nk = 4
 ) (
     clk,
+    reset,
     cipherText,
     key,
     fullkeys,
     plainText,
-    sevenSegmentOutput
+    sevenSegmentOutput,
+    isDecryption
 );
   input clk;
-  input wire [127:0] cipherText;
+  input reset;
+  input isDecryption;
+  input wire [0:127] cipherText;
   input wire [0:32*Nk-1] key;
   output [0:127] plainText;
   input wire [128*Nr-1:0] fullkeys;
@@ -48,25 +52,29 @@ module Decryption #(
   );
   assign plainText = addRoundKey(afterShiftRowsFinal, key[0:127]);
 
-  reg [20:0] sevenSegmentOutputReg;
+  reg [20:0] sevenSegmentOutputReg = 21'b1;
   assign sevenSegmentOutput = sevenSegmentOutputReg;
 
-  always @* begin
-    if (roundNum <= Nr - 1) sevenSegmentOutputReg = hexDisplayFunc(Instates[127-:8]);
+  always @(roundNum or isDecryption) begin
+    if (roundNum == 0) sevenSegmentOutputReg = hexDisplayFunc(cipherText[127-:8]);
+    else if (roundNum <= Nr - 1) sevenSegmentOutputReg = hexDisplayFunc(Instates[127-:8]);
     else if (roundNum == Nr) sevenSegmentOutputReg = hexDisplayFunc(subBytesFinalStateReg[127-:8]);
   end
 
-  always @(posedge clk) begin
-    if (roundNum == 0) begin
-      InstatesReg = cipherText ^ fullkeys[0+:128];
-      roundNum = roundNum + 1;
-    end else if (roundNum < Nr - 1) begin
-      InstatesReg = Outstates;
-      roundNum = roundNum + 1;
-    end else if (roundNum == Nr - 1) begin
-      subBytesFinalStateReg = Outstates;
-      roundNum = roundNum + 1;
-    end else sevenSegmentOutputReg = hexDisplayFunc(plainText[127-:8]);
+  always @(posedge clk or posedge reset) begin
+    if (reset) roundNum = 0;
+    else if (isDecryption) begin
+      if (roundNum == 0) begin
+        InstatesReg = cipherText ^ fullkeys[0+:128];
+        roundNum = roundNum + 1;
+      end else if (roundNum < Nr - 1) begin
+        InstatesReg = Outstates;
+        roundNum = roundNum + 1;
+      end else if (roundNum == Nr - 1) begin
+        subBytesFinalStateReg = Outstates;
+        roundNum = roundNum + 1;
+      end
+    end
   end
 
   function [0:127] addRoundKey;
@@ -97,21 +105,23 @@ module Decryption #(
 
     begin
       case (ssOutput)
+        4'b0000: segment7 = 7'b1000000;  // 1
         4'b0001: segment7 = 7'b1111001;  // 1
         4'b0010: segment7 = 7'b0100100;  // 2
         4'b0011: segment7 = 7'b0110000;  // 3
         4'b0100: segment7 = 7'b0011001;  // 4
         4'b0101: segment7 = 7'b0010010;  // 5
         4'b0110: segment7 = 7'b0000010;  // 6
-        4'b0111: segment7 = 7'b0111000;  // 7
+        4'b0111: segment7 = 7'b1111000;  // 7
         4'b1000: segment7 = 7'b0000000;  // 8
-        4'b1001: segment7 = 7'b0011000;  // 9
+        4'b1001: segment7 = 7'b0010000;  // 9
 
         default: segment7 = 7'b1111111;  // Blank display
       endcase
     end
 
   endfunction
+
 
   function [11:0] ShiftAdd3;
     input [7:0] in;
