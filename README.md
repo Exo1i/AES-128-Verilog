@@ -1,5 +1,5 @@
 # AES 128/192/256 Verilog Implementation
-
+# The code needs alot of refractoring, please refrain from using till I update it!!
 This repository contains a Verilog implementation of the AES (Advanced Encryption Standard) algorithm. AES is a widely used symmetric encryption algorithm that provides strong security for data confidentiality.
 
 ## Features
